@@ -8,7 +8,7 @@ namespace Program
     internal class Program
     {
 
-        private static void Main()
+        static void Main()
         {
             ConsoleKeyInfo input = new();
             Menu menu= new();

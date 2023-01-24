@@ -6,6 +6,7 @@ namespace MenuPokemon
     {
         bool _active;
         int _index;
+        inventory inventory = new();
 
         enum index
         {
@@ -59,6 +60,7 @@ namespace MenuPokemon
                 {
                     case (int)index.INVENTORY:
                         Console.WriteLine("INVENTORY");
+                        inventory.ShowInventory();
                         break;
                     case (int)index.TEAM:
                         Console.WriteLine("SQUAD");
