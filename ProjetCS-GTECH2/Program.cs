@@ -13,11 +13,13 @@ namespace Program
         {
             Menu menu= new();
             MapInit map = new();
+            Player p = new Player();
 
             while (Open(Console.ReadKey())) {
                 Console.Clear();
                 map.InitTab();
                 menu.MenuUpdate(Console.ReadKey());
+                p.DrawPlayer();
             }
         }
 

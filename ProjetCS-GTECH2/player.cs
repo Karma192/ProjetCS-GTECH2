@@ -27,6 +27,7 @@ namespace Program
 
         public void Deplacement()
         {
+           
             //à faire quand la map est faites 
 
         }
