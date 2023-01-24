@@ -1,12 +1,14 @@
-﻿namespace Program 
+﻿using pokehunter;
+
+namespace Program 
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
+            MapInit map = new MapInit();
 
-
-            Console.WriteLine("Hello, World!");
+            map.InitTab();
         }
     }
 }
