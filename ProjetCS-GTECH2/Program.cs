@@ -20,8 +20,8 @@ namespace Program
                 Console.Clear();
                 map.InitTab();
                 menu.MenuUpdate(input);
-                p.DrawPlayer();
                 p.Movement(input);
+                p.DrawPlayer();
             }
         }
 
