@@ -38,8 +38,8 @@ namespace pokehunter
                             case '▲':
                                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 break;
-                            case ',':
-                                Console.BackgroundColor = ConsoleColor.DarkRed;
+                            case '.':
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
                                 break;
                             default:
                                 Reset();
@@ -54,6 +54,9 @@ namespace pokehunter
                     line = sr.ReadLine();
                     Console.WriteLine();
                 }
+                //close the file
+                sr.Close();
+                //Console.ReadLine();
             }
             catch (Exception e)
             {

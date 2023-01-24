@@ -1,4 +1,4 @@
-﻿using MenuPokemon;
+using MenuPokemon;
 using pokehunter;
 using System;
 using System.Windows.Input;
