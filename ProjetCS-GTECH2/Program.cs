@@ -1,4 +1,6 @@
-﻿namespace Program 
+﻿using System.Numerics;
+
+namespace Program 
 {
     internal class Program
     {
@@ -6,7 +8,11 @@
         {
 
 
-            Console.WriteLine("Hello, World!");
+            Player p;
+            p = new Player();
+            Console.WriteLine(p.Health);
+            p.Health = 12;
+
         }
     }
 }
