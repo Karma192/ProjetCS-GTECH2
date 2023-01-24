@@ -13,14 +13,15 @@ namespace Program
             ConsoleKeyInfo input = new();
             Menu menu= new();
             MapInit map = new();
-            Player p = new Player();
+            Player p = new();
 
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.Clear();
                 map.InitTab();
-                menu.MenuUpdate(Console.ReadKey());
+                menu.MenuUpdate(input);
                 p.DrawPlayer();
+                p.Movement(input);
             }
         }
 

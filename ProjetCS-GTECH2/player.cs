@@ -6,11 +6,13 @@ namespace Program
     public class Player
     {
         int _health = 100;
+        int _yPos = 10;
+        int _xPos = 50;
 
 
         public Player()
         {
-            Console.WriteLine("Coucou");
+           
         }
         public int Health
         {
@@ -19,17 +21,32 @@ namespace Program
         }
          public void DrawPlayer()
         {
-            Console.SetCursorPosition(50, 10);
+          
+            Console.SetCursorPosition(_xPos, _yPos);
             Console.Write("P");
             
         }
 
 
-        public void Deplacement()
+        public void Movement(ConsoleKeyInfo input)
         {
-           
-            //à faire quand la map est faites 
-
+            switch (input.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    _yPos = _yPos - 1;
+                    break;
+                case ConsoleKey.DownArrow:
+                    _yPos = _yPos + 1;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    _xPos = _xPos - 1;
+                    break;
+                case ConsoleKey.RightArrow:
+                    _xPos = _xPos + 1;
+                    break;
+                default:
+                    break;
+            }
         }
 
 
