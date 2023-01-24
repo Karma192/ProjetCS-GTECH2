@@ -30,20 +30,22 @@ namespace MenuPokemon
             }
         }
 
-        private void ActiveIndex(ConsoleKeyInfo input) 
-        { 
+        private void ActiveIndex(ConsoleKeyInfo input)
+        {
             if (_active)
             {
-                switch(input.Key)
+                switch (input.Key)
                 {
                     case ConsoleKey.I:
+                        _index = 1;
                         break;
                     case ConsoleKey.T:
+                        _index = 2;
                         break;
                     case ConsoleKey.S:
+                        _index = 3;
                         break;
                     default:
-                        Console.WriteLine("An error occured with input...");
                         break;
                 }
             }
