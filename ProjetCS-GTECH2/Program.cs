@@ -17,11 +17,11 @@ namespace Program
 
             while (Open(input)) {
                 input = Console.ReadKey();
-                Console.Clear();
+                Console.SetCursorPosition(0, 0);
                 map.InitTab();
                 menu.MenuUpdate(input);
-                p.DrawPlayer();
                 p.Movement(input);
+                p.DrawPlayer();
             }
         }
 

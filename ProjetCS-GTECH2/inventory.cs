@@ -9,7 +9,7 @@ namespace MenuPokemon
 {
     internal class inventory
     {
-        public Object[] objects;
+        Object[] objects;
 
         public void ShowInventory()
         {

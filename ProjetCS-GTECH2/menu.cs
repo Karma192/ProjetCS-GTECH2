@@ -6,6 +6,12 @@ namespace MenuPokemon
     {
         bool _active;
         int _index;
+        string _inventory = "INVENTORY";
+        string _save = "SAVE";
+        string _team = "TEAM";
+        string _menu = "MENU";
+
+
         inventory inventory = new();
 
         enum index
@@ -59,23 +65,32 @@ namespace MenuPokemon
                 switch (_index)
                 {
                     case (int)index.INVENTORY:
-                        Console.WriteLine("INVENTORY");
+                        Console.SetCursorPosition(60 -(_inventory.ToCharArray().Length /2), 2);
+                        Console.WriteLine(_inventory);
                         inventory.ShowInventory();
                         break;
                     case (int)index.TEAM:
-                        Console.WriteLine("SQUAD");
+                        Console.WriteLine(_team);
                         break;
                     case (int)index.SAVE:
-                        Console.WriteLine("SAVE");
+                        Console.WriteLine(_save);
                         break;
                     case (int)index.MENU:
-                        Console.WriteLine("MENU");
+                        Console.WriteLine(_menu);
                         break;
                     default:
-                        Console.WriteLine("An error occured in the menu...");
                         break;
                 }
             }
+        }
+
+        private void DrawMenu(string text)
+        {
+            /*Console.ForegroundColor = ConsoleColor.White;
+            for (int a = 0, a < 30; a++)
+            {
+
+            }*/
         }
     }
 }
