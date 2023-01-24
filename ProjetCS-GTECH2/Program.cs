@@ -1,4 +1,5 @@
 using System.Numerics;
+using pokehunter;
 
 namespace Program 
 {
@@ -7,12 +8,11 @@ namespace Program
         private static void Main(string[] args)
         {
             MapInit map = new MapInit();
-
+            map.InitTab();
 
             Player p;
             p = new Player();
-            Console.WriteLine(p.Health);
-            p.Health = 12;
+            p.DrawPlayer();
 
         }
     }

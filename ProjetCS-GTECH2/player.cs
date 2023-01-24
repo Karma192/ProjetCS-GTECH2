@@ -17,6 +17,13 @@ namespace Program
             get => _health;
             set => _health = value;
         }
+         public void DrawPlayer()
+        {
+            Console.SetCursorPosition(50, 10);
+            Console.Write("P");
+            
+        }
+
 
         public void Deplacement()
         {
