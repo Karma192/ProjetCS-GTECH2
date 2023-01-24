@@ -35,5 +35,12 @@
       <FileName>fighter.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="ProjetCS_GTECH2.fight">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>fight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

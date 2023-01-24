@@ -14,14 +14,20 @@ namespace Program
             Menu menu= new();
             MapInit map = new();
             Player p = new();
+            Ennemi e = new();
+            Fight f = new();
+            
 
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
                 map.InitTab();
-                menu.MenuUpdate(input);
+                menu.MenuUpdate(input); 
+                e.DrawEnnemi();
                 p.Movement(input);
                 p.DrawPlayer();
+                f.StartFight();
+                
             }
         }
 

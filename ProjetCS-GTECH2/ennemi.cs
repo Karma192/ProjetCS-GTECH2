@@ -4,8 +4,8 @@ namespace Program
 {
     public class Ennemi
     {
-        int _xPos = 20;
-        int _yPos = 60;
+        int _xPos = 60;
+        int _yPos = 20;
 
         public Ennemi()
         {

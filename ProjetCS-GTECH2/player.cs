@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Program
+namespace pokehunter
 {
     public class Player
     {
@@ -27,6 +27,15 @@ namespace Program
             
         }
 
+        public int GetXPos() 
+        {
+            return _xPos;
+        }
+
+        public int GetYPos() 
+        {
+            return _yPos;
+        }
 
         public void Movement(ConsoleKeyInfo input)
         {
