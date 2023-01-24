@@ -8,7 +8,7 @@ namespace Program
     internal class Program
     {
 
-        private static void Main()
+        static void Main()
         {
             ConsoleKeyInfo input = new();
             Menu menu= new();
@@ -17,7 +17,7 @@ namespace Program
 
             while (Open(input)) {
                 input = Console.ReadKey();
-                Console.Clear();
+                Console.SetCursorPosition(0, 0);
                 map.InitTab();
                 menu.MenuUpdate(input);
                 p.Movement(input);

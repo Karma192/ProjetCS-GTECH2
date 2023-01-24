@@ -3,15 +3,36 @@
   <Class Name="Program.Program" Collapsed="true">
     <Position X="3.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Program.Menu" Collapsed="true">
-    <Position X="10" Y="3.5" Width="1.5" />
+  <Class Name="MenuPokemon.inventory">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjetCS_GTECH2.objects">
+    <Position X="10.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>menu.cs</FileName>
+      <FileName>objects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjetCS_GTECH2.team">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>team.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProjetCS_GTECH2.fighter">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>fighter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
