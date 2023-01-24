@@ -1,20 +1,24 @@
 ﻿using MenuPokemon;
+using pokehunter;
+using System;
+using System.Windows.Input;
 
-namespace Program 
+namespace Program
 {
     internal class Program
     {
+        ConsoleKeyInfo _input = new();
+
         private static void Main()
         {
             Menu menu= new();
-            Console.WriteLine("Hello, World!");
+            MapInit map = new();
 
             while (Open(Console.ReadKey())) {
                 Console.Clear();
+                map.InitTab();
                 menu.MenuUpdate(Console.ReadKey());
-                
             }
-
         }
 
         private static bool Open(ConsoleKeyInfo input)

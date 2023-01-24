@@ -55,9 +55,6 @@ namespace MenuPokemon
             {
                 switch (_index)
                 {
-                    case (int)index.MENU:
-                        Console.WriteLine("MENU");
-                        break;
                     case (int)index.INVENTORY:
                         Console.WriteLine("INVENTORY");
                         break;
@@ -66,6 +63,9 @@ namespace MenuPokemon
                         break;
                     case (int)index.SAVE:
                         Console.WriteLine("SAVE");
+                        break;
+                    case (int)index.MENU:
+                        Console.WriteLine("MENU");
                         break;
                     default:
                         Console.WriteLine("An error occured in the menu...");

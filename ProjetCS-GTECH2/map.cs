@@ -54,9 +54,6 @@ namespace pokehunter
                     line = sr.ReadLine();
                     Console.WriteLine();
                 }
-                //close the file
-                sr.Close();
-                Console.ReadLine();
             }
             catch (Exception e)
             {
