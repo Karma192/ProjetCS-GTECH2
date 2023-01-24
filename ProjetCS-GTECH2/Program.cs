@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 
 namespace Program 
 {
@@ -6,6 +6,7 @@ namespace Program
     {
         private static void Main(string[] args)
         {
+            MapInit map = new MapInit();
 
 
             Player p;
