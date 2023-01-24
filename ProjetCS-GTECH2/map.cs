@@ -60,11 +60,9 @@ namespace pokehunter
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception: " + e.Message);
             }
             finally
             {
-                Console.WriteLine("Executing finally block.");
             }
         }
     }

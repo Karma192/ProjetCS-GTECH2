@@ -7,15 +7,16 @@ namespace Program
 {
     internal class Program
     {
-        ConsoleKeyInfo _input = new();
 
         private static void Main()
         {
+            ConsoleKeyInfo input = new();
             Menu menu= new();
             MapInit map = new();
             Player p = new Player();
 
-            while (Open(Console.ReadKey())) {
+            while (Open(input)) {
+                input = Console.ReadKey();
                 Console.Clear();
                 map.InitTab();
                 menu.MenuUpdate(Console.ReadKey());
