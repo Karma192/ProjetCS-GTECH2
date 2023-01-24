@@ -18,7 +18,7 @@ namespace Program
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                map.InitTab();
+                /*map.InitTab();*/
                 menu.MenuUpdate(input);
                 p.Movement(input);
                 p.DrawPlayer();
