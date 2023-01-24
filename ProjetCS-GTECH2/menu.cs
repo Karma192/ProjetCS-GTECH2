@@ -62,6 +62,7 @@ namespace MenuPokemon
         {
             if (_active)
             {
+                DrawMenu();
                 switch (_index)
                 {
                     case (int)index.INVENTORY:
@@ -84,13 +85,18 @@ namespace MenuPokemon
             }
         }
 
-        private void DrawMenu(string text)
+        private void DrawMenu()
         {
-            /*Console.ForegroundColor = ConsoleColor.White;
-            for (int a = 0, a < 30; a++)
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.White;
+            for (int i = 0; i < 28; i++)
             {
-
-            }*/
+                for (int j = 0; j < 30; j++)
+                {
+                    Console.WriteLine("O", j, i);
+                }
+            }
+            Console.ForegroundColor= ConsoleColor.Black;
         }
     }
 }
