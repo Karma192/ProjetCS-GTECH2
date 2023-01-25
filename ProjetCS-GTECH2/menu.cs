@@ -6,7 +6,7 @@ namespace MenuPokemon
     {
         const int _height = 29;
         const int _width = 30;
-        bool _active;
+        public bool _active;
         int _index;
         string _inventory = "INVENTORY";
         string _save = "SAVE";

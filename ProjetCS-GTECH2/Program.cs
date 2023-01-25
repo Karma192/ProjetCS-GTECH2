@@ -37,7 +37,7 @@ namespace Program
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
-                if (canMove) 
+                if (canMove && menu._active) 
                 {
                     player.Mouvement(move);
                 }
