@@ -12,8 +12,8 @@ namespace pokehunter
         {
            
         }
-        
-         public void DrawPlayer()
+
+        public void DrawPlayer(int yPosInit, int xPosInit)
         {
             if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
             {

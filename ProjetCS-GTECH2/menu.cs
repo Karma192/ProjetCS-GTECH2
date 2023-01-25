@@ -10,7 +10,7 @@ namespace MenuPokemon
         const int _widthFight = 118;
 
         public bool _activeMenu;
-        public bool _fightMenu = true;
+        public bool _fightMenu;
         int _index;
         string _inventory = "INVENTORY";
         string _save = "SAVE";
@@ -229,6 +229,11 @@ namespace MenuPokemon
                         break;
                 }
             }
+        }
+
+        private void ShowAttack()
+        {
+
         }
     }
 }
