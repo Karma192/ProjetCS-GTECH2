@@ -5,20 +5,14 @@ namespace pokehunter
 {
     public class Player
     {
-        int _health = 100;
         int _yPos = 10;
         int _xPos = 50;
-
 
         public Player()
         {
            
         }
-        public int Health
-        {
-            get => _health;
-            set => _health = value;
-        }
+        
          public void DrawPlayer()
         {
           
@@ -53,6 +47,7 @@ namespace pokehunter
                     return '0';
             }
         }
+
         public void Mouvement(char move)
         {
             switch (move)

@@ -6,22 +6,32 @@ namespace MenuPokemon
     {
         const int _height = 29;
         const int _width = 30;
-        bool _active;
+        const int _heightFight = 7;
+        const int _widthFight = 118;
+
+        public bool _activeMenu;
+        public bool _fightMenu = true;
         int _index;
         string _inventory = "INVENTORY";
         string _save = "SAVE";
         string _team = "TEAM";
-        string _menu = "MENU";
 
 
         Inventory inventory = new();
+        Team team = new();
 
-        enum index
+        enum indexMenu
         {
-            MENU = 0,
-            INVENTORY = 1,
-            TEAM = 2,
-            SAVE = 3,
+            INVENTORY = 0,
+            TEAM = 1,
+            SAVE = 2,
+        }
+
+        enum indexFight
+        {
+            ATTACK = 0,
+            OBJECTS = 1,
+            ESCAPE = 2,
         }
 
         public void MenuUpdate(ConsoleKeyInfo input)
@@ -33,27 +43,55 @@ namespace MenuPokemon
 
         private void ActiveMenu(ConsoleKeyInfo input)
         {
-            if (input.Key == ConsoleKey.M)
+            if (input.Key == ConsoleKey.M && !_fightMenu)
             {
-                _active = !_active;
+                _activeMenu = !_activeMenu;
                 _index = 0;
             }
         }
 
         private void ActiveIndex(ConsoleKeyInfo input)
         {
-            if (_active)
+            if (_activeMenu)
             {
                 switch (input.Key)
                 {
-                    case ConsoleKey.I:
-                        _index = 1;
+                    case ConsoleKey.LeftArrow:
+                        if (_index != 0)
+                        {
+                            _index--;
+                        }
                         break;
-                    case ConsoleKey.T:
-                        _index = 2;
+                    case ConsoleKey.RightArrow:
+                        if (_index != 2)
+                        {
+                            _index++;
+                        }
                         break;
-                    case ConsoleKey.S:
-                        _index = 3;
+                    default:
+                        break;
+                }
+            }
+
+            if (_fightMenu)
+            {
+                switch (input.Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        if (_index != 0)
+                        {
+                            _index--;
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (_index != 2)
+                        {
+                            _index++;
+                        }
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        break;
+                    case ConsoleKey.RightArrow:
                         break;
                     default:
                         break;
@@ -63,54 +101,32 @@ namespace MenuPokemon
 
         private void ShowMenu()
         {
-            if (_active)
+            if (_activeMenu && !_fightMenu)
             {
                 DrawMenuBackground();
+                WriteTitleMenu();
                 switch (_index)
                 {
-                    case (int)index.INVENTORY:
-                        WriteTitleMenu(_inventory);
+                    case (int)indexMenu.INVENTORY:
                         inventory.ShowInventory();
                         break;
-                    case (int)index.TEAM:
-                        WriteTitleMenu(_team);
+                    case (int)indexMenu.TEAM:
                         break;
-                    case (int)index.SAVE:
-                        WriteTitleMenu(_save);
-                        break;
-                    case (int)index.MENU:
-                        WriteTitleMenu(_menu);
-                        for (int i = 0; i < 4; i++)
-                        {
-                            Console.SetCursorPosition(2, (5 +(i * 2)));
-                            switch (i)
-                            {
-                                case (int)index.MENU:
-                                    Console.WriteLine("M : Close the menu");
-                                    break;
-                                case (int)index.INVENTORY:
-                                    Console.WriteLine("I : " + _inventory);
-                                    break;
-                                case (int)index.TEAM:
-                                    Console.WriteLine("T : " + _team);
-                                    break;
-                                case (int)index.SAVE:
-                                    Console.WriteLine("S : " + _save);
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
+                    case (int)indexMenu.SAVE:
                         break;
                     default:
                         break;
                 }
             }
+
+            if (_fightMenu)
+            {
+                DrawFightMenu();
+            }
         }
 
         private void DrawMenuBackground()
         {
-            Console.SetCursorPosition(0, 0);
             for (int i = 0; i < _height; i++)
             {
                 for (int j = 0; j < _width; j++)
@@ -119,12 +135,100 @@ namespace MenuPokemon
                     Console.WriteLine(" ");
                 }
             }
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor= ConsoleColor.DarkRed;
+            Console.WriteLine("Press M to exit menu...");
         }
 
-        private void WriteTitleMenu(string title)
+        private void WriteTitleMenu()
         {
-            Console.SetCursorPosition((_width / 2) - (title.ToCharArray().Length / 2), 1);
-            Console.WriteLine(title);
+            switch (_index)
+            {
+                case (int)indexMenu.INVENTORY:
+                    Console.SetCursorPosition(1, 2);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(_inventory);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.SetCursorPosition(2 + _inventory.ToCharArray().Length, 2);
+                    Console.WriteLine(_team);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.SetCursorPosition(3 + _inventory.ToCharArray().Length + _team.ToCharArray().Length, 2);
+                    Console.WriteLine(_save);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case (int)indexMenu.TEAM:
+                    Console.SetCursorPosition(1, 2);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine(_inventory);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(2 + _inventory.ToCharArray().Length, 2);
+                    Console.WriteLine(_team);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.SetCursorPosition(3 + _inventory.ToCharArray().Length + _team.ToCharArray().Length, 2);
+                    Console.WriteLine(_save);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case (int)indexMenu.SAVE:
+                    Console.SetCursorPosition(1, 2);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine(_inventory);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.SetCursorPosition(2 + _inventory.ToCharArray().Length, 2);
+                    Console.WriteLine(_team);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.SetCursorPosition(3 + _inventory.ToCharArray().Length + _team.ToCharArray().Length, 2);
+                    Console.WriteLine(_save);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void DrawFightMenu()
+        {
+            for (int i = 1; i < _heightFight + 1; i++)
+            {
+                for (int j = 1; j < _widthFight + 1; j++)
+                {
+                    Console.SetCursorPosition((int)j, (int)i + 20);
+                    Console.WriteLine(" ");
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                switch (i)
+                {
+                    case (int)indexFight.ATTACK:
+                        Console.SetCursorPosition(5, 23 +i); 
+                        if (_index == (int)indexFight.ATTACK)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.WriteLine("ATTACK");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    case (int)indexFight.OBJECTS:
+                        Console.SetCursorPosition(5, 23 + i);
+                        if (_index == (int)indexFight.OBJECTS)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.WriteLine("OBJECTS");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    case (int)indexFight.ESCAPE:
+                        Console.SetCursorPosition(5, 23 + i);
+                        if (_index == (int)indexFight.ESCAPE)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.WriteLine("ESCAPE");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                }
+            }
         }
     }
 }

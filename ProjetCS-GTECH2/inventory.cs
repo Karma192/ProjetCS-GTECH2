@@ -9,11 +9,11 @@ namespace MenuPokemon
     public class Inventory
     {
         Object[] _objects = new Object[3];
-        Objects.Ammunitions amo = new();
+        Objects.Ammunitions _amo = new();
 
         public Inventory()
         {
-            _objects[0] = amo;
+            _objects[0] = _amo;
         }
 
         public void ShowInventory()

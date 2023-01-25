@@ -29,7 +29,7 @@ namespace Program
                 e.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
-                if (canMove) 
+                if (canMove && !menu._activeMenu && !menu._fightMenu) 
                 {
                     player.Mouvement(move);
                 }
