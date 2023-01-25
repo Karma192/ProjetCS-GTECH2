@@ -10,6 +10,7 @@ namespace Objects
     {
         public string _name;
         public int _quantity;
+        public int _maxQuantity;
 
         public string ShowObject()
         {

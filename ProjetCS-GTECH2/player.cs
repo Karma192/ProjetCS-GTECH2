@@ -8,6 +8,8 @@ namespace pokehunter
         int _yPos = 10;
         int _xPos = 50;
 
+        public string _player = "P";
+
         public Player()
         {
            
@@ -21,7 +23,7 @@ namespace pokehunter
                  _xPos =  xPosInit;
             }
             Console.SetCursorPosition(_xPos, _yPos);
-            Console.Write("P");
+            Console.Write(_player);
             
         }
 
