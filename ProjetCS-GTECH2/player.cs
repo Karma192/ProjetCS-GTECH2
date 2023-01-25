@@ -6,8 +6,8 @@ namespace pokehunter
     public class Player
     {
         int _health = 100;
-        int _yPos = 10;
-        int _xPos = 50;
+        int _yPos = 0;
+        int _xPos = 0;
 
 
         public Player()
@@ -19,9 +19,13 @@ namespace pokehunter
             get => _health;
             set => _health = value;
         }
-         public void DrawPlayer()
+         public void DrawPlayer(int yPosInit, int xPosInit)
         {
-          
+            if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
+            {
+                _yPos = yPosInit;
+                 _xPos =  xPosInit;
+            }
             Console.SetCursorPosition(_xPos, _yPos);
             Console.Write("P");
             
@@ -39,6 +43,7 @@ namespace pokehunter
 
         public char Getinput(ConsoleKeyInfo input)
         {
+            
             switch (input.Key)
             {
                 case ConsoleKey.UpArrow:

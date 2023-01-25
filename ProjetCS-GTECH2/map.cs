@@ -16,12 +16,12 @@ namespace pokehunter
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        public void InitTab()
+        public void InitTab(string fileName)
         {
             String line;
             try
             {
-                StreamReader sr = new StreamReader("ascii-art.txt");
+                StreamReader sr = new StreamReader(fileName);
                 line = sr.ReadLine();
                 j = 0;
                 while (line != null)
