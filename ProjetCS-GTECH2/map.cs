@@ -7,7 +7,8 @@ namespace pokehunter
 
     internal class MapInit
     {
-        public char[,] tab = new char[120, 28];
+        public int[,] tab = new int[120, 29];
+        int j = 0;
 
         public void Reset()
         {
@@ -20,33 +21,67 @@ namespace pokehunter
             String line;
             try
             {
-                //Pass the file path and file name to the StreamReader constructor
                 StreamReader sr = new StreamReader("ascii-art.txt");
-                //Read the first line of text
                 line = sr.ReadLine();
-                //Continue to read until you reach end of file
+                j = 0;
                 while (line != null)
                 {
+
                     for (int i = 0; i < line.Length; i++)
                     {
                         char letters = line[i];
+                        
                         switch (letters)
                         {
                             case '#':
                                 Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                tab[i, j] = 1;
                                 break;
                             case '▲':
-                                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                tab[i, j] = 2;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                break;
+                            case '▼':
+                                tab[i, j] = 2;
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
                                 break;
                             case '.':
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
+                                tab[i, j] = 0;
+                                Reset();
+                                break;
+                            case '┐':
+                                tab[i, j] = 1;
+                                Reset();
+                                break;
+                            case '─':
+                                tab[i, j] = 1;
+                                Reset();
+                                break;
+                            case '│':
+                                tab[i, j] = 1;
+                                Reset();
+                                break;
+                            case '┘':
+                                tab[i, j] = 1;
+                                Reset();
+                                break;
+                            case '└':
+                                tab[i, j] = 1;
+                                Reset();
+                                break;
+                            case '┌':
+                                tab[i, j] = 1;
+                                Reset();
                                 break;
                             default:
+                                tab[i, j] = 2;
                                 Reset();
                                 break;
                         }
                         Console.Write(line[i]);
                     }
+                    j++;
 
                     //write the line to console window
 
