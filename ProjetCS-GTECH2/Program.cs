@@ -16,25 +16,33 @@ namespace Program
             Menu menu = new();
             MapInit map = new();
             Player player = new();
-            Ennemi e = new();
-            Fight f = new();
+            Ennemi ennemi = new();
+            Fight fight = new();
             char move;
             bool canMove = false;
+            bool onFight = false;
 
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                map.InitTab();
+                if(onFight == false)
+                {
+                    map.InitTab("ascii-art.txt");
+                }
+                else
+                {
+                    map.InitTab("combat.txt");
+                }
                 menu.MenuUpdate(input); 
-                e.DrawEnnemi();
+                ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
                 if (canMove) 
                 {
                     player.Mouvement(move);
                 }
-                player.DrawPlayer();
-                f.StartFight();
+                player.DrawPlayer(10,50);
+                onFight = fight.StartFight(player, ennemi);
 
                 
             }

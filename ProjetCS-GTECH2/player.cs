@@ -26,8 +26,6 @@ namespace pokehunter
                 _yPos = yPosInit;
                  _xPos =  xPosInit;
             }
-            
-
             Console.SetCursorPosition(_xPos, _yPos);
             Console.Write("P");
             
