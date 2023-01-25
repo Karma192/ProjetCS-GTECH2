@@ -37,12 +37,20 @@ namespace Program
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
-                if (canMove && !menu._activeMenu && !menu._fightMenu) 
+                if (canMove && !menu._activeMenu && !menu._fightMenu && !onFight) 
                 {
                     player.Mouvement(move);
                 }
                 player.DrawPlayer(10,50);
                 onFight = fight.StartFight(player, ennemi);
+                if (onFight == false)
+                {
+                    player._player = "P";
+                }
+                else
+                {
+                    player._player = " ";
+                }
 
                 
             }

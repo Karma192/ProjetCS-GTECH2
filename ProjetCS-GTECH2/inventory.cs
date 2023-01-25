@@ -11,6 +11,7 @@ namespace MenuPokemon
         Object[] _objects = new Object[3];
         Objects.Ammunitions _amo = new();
 
+
         public Inventory()
         {
             _objects[0] = _amo;

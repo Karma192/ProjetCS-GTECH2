@@ -10,6 +10,7 @@ namespace Fighter
         string _name;
         int _health = 100;
         string[] _attack = new string[4];
+        int _defense;
 
         public int Health
         {
@@ -22,9 +23,10 @@ namespace Fighter
             get => _attack;
         }
 
-        public Fighters(string name)
+        public Fighters(string name, int defense)
         {
             _name = name;
+            _defense = defense;
         }
 
         public string ShowFighter()
