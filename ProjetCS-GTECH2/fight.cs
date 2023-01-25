@@ -15,16 +15,14 @@ namespace pokehunter
 
         public void StartFight()
         {
-            Player p;
-            p = new Player();
-            Ennemi e;
-            e = new Ennemi();
+            Player player = new();
+            Ennemi ennemi = new();
+            
+            int playerXPos = player.GetXPos();
+            int playerYPos = player.GetYPos();
 
-            int playerXPos = p.GetXPos();
-            int playerYPos = p.GetYPos();
-
-            int ennemiXPos = e.GetXPos();
-            int ennemiYPos = e.GetYPos();
+            int ennemiXPos = ennemi.GetXPos();
+            int ennemiYPos = ennemi.GetYPos();
 
             if(playerXPos == ennemiXPos && playerYPos == ennemiYPos)
             {
