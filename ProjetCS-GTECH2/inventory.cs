@@ -2,30 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Objects;
 using Object = Objects.Object;
 
 namespace MenuPokemon
 {
-    internal class inventory
+    public class Inventory
     {
-        Object[] objects;
+        Object[] _objects = new Object[3];
+        Objects.Ammunitions amo = new();
+
+        public Inventory()
+        {
+            _objects[0] = amo;
+        }
 
         public void ShowInventory()
         {
-            if (objects != null)
+            if (_objects != null)
             {
-                foreach (var obj in objects)
+                int posY = 2;
+                foreach (var obj in _objects)
                 {
-                    Console.WriteLine(obj.ShowObject());
+                    posY += 2;
+                    if (obj != null)
+                    {
+                        Console.SetCursorPosition(2, posY);
+                        Console.WriteLine(obj.ShowObject());
+                    }
                 }
             }
-        }
-
-        public void AddToInventory(Object obj)
-        {
-            int lenght = objects.Length +1;
-            objects.SetValue(obj, lenght);
         }
     }
 }

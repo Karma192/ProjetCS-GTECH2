@@ -11,8 +11,9 @@ namespace Program
 
         static void Main()
         {
+            Console.CursorVisible = false;
             ConsoleKeyInfo input = new();
-            Menu menu= new();
+            Menu menu = new();
             MapInit map = new();
             Player player = new();
             Ennemi e = new();
@@ -97,11 +98,13 @@ namespace Program
                 if (Console.ReadKey().Key == ConsoleKey.Y)
                 {
                     return false;
-                } else
+                }
+                else
                 {
                     return true;
                 }
-            } else
+            }
+            else
             {
                 return true;
             }

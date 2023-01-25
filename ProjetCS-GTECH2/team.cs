@@ -23,8 +23,8 @@ namespace MenuPokemon
 
         public void AddToTeam(Fighters fighter)
         {
-            int lenght = _fighters.Length + 1;
-            _fighters.SetValue(fighter, lenght);
+            int index = _fighters.Length;
+            _fighters.SetValue(fighter, index);
         }
     }
 }
