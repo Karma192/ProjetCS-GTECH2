@@ -33,7 +33,7 @@ namespace Objects
 
     public class Ammunitions : Object
     {
-        Ammunitions()
+        public Ammunitions()
         {
             _name = "Ammunitions";
             _quantity = 0;
