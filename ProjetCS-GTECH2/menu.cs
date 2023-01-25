@@ -4,6 +4,8 @@ namespace MenuPokemon
 {
     internal class Menu
     {
+        const int _height = 29;
+        const int _width = 30;
         bool _active;
         int _index;
         string _inventory = "INVENTORY";
@@ -66,18 +68,17 @@ namespace MenuPokemon
                 switch (_index)
                 {
                     case (int)index.INVENTORY:
-                        Console.SetCursorPosition(60 -(_inventory.ToCharArray().Length /2), 2);
-                        Console.WriteLine(_inventory);
+                        WriteTitleMenu(_inventory);
                         inventory.ShowInventory();
                         break;
                     case (int)index.TEAM:
-                        Console.WriteLine(_team);
+                        WriteTitleMenu(_team);
                         break;
                     case (int)index.SAVE:
-                        Console.WriteLine(_save);
+                        WriteTitleMenu(_save);
                         break;
                     case (int)index.MENU:
-                        Console.WriteLine(_menu);
+                        WriteTitleMenu(_menu);
                         break;
                     default:
                         break;
@@ -88,15 +89,20 @@ namespace MenuPokemon
         private void DrawMenu()
         {
             Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor = ConsoleColor.White;
-            for (int i = 0; i < 28; i++)
+            for (int i = 0; i < _height; i++)
             {
-                for (int j = 0; j < 30; j++)
+                for (int j = 0; j < _width; j++)
                 {
-                    Console.WriteLine("O", j, i);
+                    Console.SetCursorPosition((int)j, (int)i);
+                    Console.WriteLine(" ");
                 }
             }
-            Console.ForegroundColor= ConsoleColor.Black;
+        }
+
+        private void WriteTitleMenu(string title)
+        {
+            Console.SetCursorPosition((_width /2) - (title.ToCharArray().Length / 2), 1);
+            Console.WriteLine(title);
         }
     }
 }
