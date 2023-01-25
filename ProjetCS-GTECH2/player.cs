@@ -1,25 +1,19 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace pokehunter
 {
     public class Player
     {
-        int _health = 100;
-        int _yPos = 0;
-        int _xPos = 0;
-
+        int _yPos = 10;
+        int _xPos = 50;
 
         public Player()
         {
            
         }
-        public int Health
-        {
-            get => _health;
-            set => _health = value;
-        }
-         public void DrawPlayer(int yPosInit, int xPosInit)
+
+        public void DrawPlayer(int yPosInit, int xPosInit)
         {
             if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
             {
@@ -58,6 +52,7 @@ namespace pokehunter
                     return '0';
             }
         }
+
         public void Mouvement(char move)
         {
             switch (move)
