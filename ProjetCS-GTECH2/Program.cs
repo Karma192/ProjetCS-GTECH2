@@ -25,14 +25,17 @@ namespace Program
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                if(onFight == false)
+                if (!menu._activeMenu)
                 {
-                    map.InitTab("ascii-art.txt");
-                }
-                else
-                {
-                    map.InitTab("combat.txt");
-                }
+                    if (onFight == false)
+                    {
+                        map.InitTab("ascii-art.txt");
+                    }
+                    else
+                    {
+                        map.InitTab("combat.txt");
+                    }
+                }                
                 menu.MenuUpdate(input); 
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);

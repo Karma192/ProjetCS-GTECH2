@@ -8,7 +8,7 @@ namespace MenuPokemon
 {
     internal class Team
     {
-        Fighters[] _fighters = new Fighters[3];
+        public Fighters[] _fighters = new Fighters[3];
         Fighters _chassaing = new("CHASSAING");
         Fighters _cyrian = new("CYRIAN");
         Fighters _karma = new("KARMA");
@@ -16,7 +16,10 @@ namespace MenuPokemon
         public Team()
         {
             _fighters[0] = _chassaing;
+            string[] atkChassaing = { "oui","non","feur","'fin bref" };
+            _fighters[0].Attack = atkChassaing;
             _fighters[1] = _cyrian;
+            string[] atkCyrian = { "null" };
             _fighters[2] = _karma;
         }
 
