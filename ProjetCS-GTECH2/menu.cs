@@ -40,7 +40,7 @@ namespace MenuPokemon
         public void MenuUpdate(ConsoleKeyInfo input)
         {
             ActiveMenu(input);
-            ActiveIndex(input);
+            HandleKey(input);
             ShowMenu();
         }
 
@@ -53,7 +53,7 @@ namespace MenuPokemon
             }
         }
 
-        private void ActiveIndex(ConsoleKeyInfo input)
+        private void HandleKey(ConsoleKeyInfo input)
         {
             if (_activeMenu)
             {
@@ -117,21 +117,39 @@ namespace MenuPokemon
 
         private void EnterAction()
         {
-            switch(_index)
+            if (_activeMenu)
             {
-                case (int)indexFight.ATTACK:
-                    Console.WriteLine(team._fighters[_indexActualFighter].Attack[_indexBis]);
-                    break;
-                case (int)indexFight.OBJECTS:
-                    Console.WriteLine(inventory.GetObjects()[_indexBis]);
-                    break;
-                case (int)indexFight.SWITCH:
-                    Console.WriteLine(team._fighters[_indexBis].Name);
-                    break;
-                case (int)indexFight.ESCAPE:
-                    Console.WriteLine("You quit the fight...");
-                    _fightMenu = false;
-                    break;
+                switch (_index)
+                {
+                    case (int)indexMenu.INVENTORY:
+                        break;
+                    case (int)indexMenu.TEAM:
+                        break;
+                    case (int)indexMenu.SAVE:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (_fightMenu)
+            {
+                switch (_index)
+                {
+                    case (int)indexFight.ATTACK:
+                        Console.WriteLine(team._fighters[_indexActualFighter].Attack[_indexBis]);
+                        break;
+                    case (int)indexFight.OBJECTS:
+                        Console.WriteLine(inventory.GetObjects()[_indexBis]);
+                        break;
+                    case (int)indexFight.SWITCH:
+                        Console.WriteLine(team._fighters[_indexBis].Name);
+                        break;
+                    case (int)indexFight.ESCAPE:
+                        Console.WriteLine("You quit the fight...");
+                        _fightMenu = false;
+                        break;
+                }
             }
         }
 
@@ -172,7 +190,7 @@ namespace MenuPokemon
                 }
             }
             Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor= ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Press M to exit menu...");
         }
 
@@ -242,7 +260,7 @@ namespace MenuPokemon
                             ShowAttack();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
-                        Console.SetCursorPosition(5, 23 +i); 
+                        Console.SetCursorPosition(5, 23 + i);
                         Console.WriteLine("ATTACK");
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
@@ -285,7 +303,7 @@ namespace MenuPokemon
         {
             string[] atk = team._fighters[_indexActualFighter].Attack;
             int i = 23;
-            foreach(string s in atk)
+            foreach (string s in atk)
             {
                 Console.SetCursorPosition(20, i);
                 Console.WriteLine(s);
@@ -349,7 +367,7 @@ namespace MenuPokemon
             }
         }
 
-        private void ShowSwitch() 
+        private void ShowSwitch()
         {
             string[] mates = new string[3];
             mates[0] = team._fighters[0].Name;
