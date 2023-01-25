@@ -16,7 +16,10 @@ namespace MenuPokemon
         public Team()
         {
             _fighters[0] = _chassaing;
+            string[] atkChassaing = { "oui","non","feur","'fin bref" };
+            _fighters[0].Attack = atkChassaing;
             _fighters[1] = _cyrian;
+            string[] atkCyrian = { "null" };
             _fighters[2] = _karma;
         }
 

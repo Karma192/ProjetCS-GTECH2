@@ -12,6 +12,11 @@ namespace Fighter
         string[] _attack = new string[4];
         int _defense;
 
+        public string Name
+        {
+            get => _name;
+        }
+
         public int Health
         {
             get => _health;
@@ -21,6 +26,7 @@ namespace Fighter
         public string[] Attack
         {
             get => _attack;
+            set => _attack = value;
         }
 
         public Fighters(string name, int defense)
