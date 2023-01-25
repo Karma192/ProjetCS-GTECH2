@@ -14,7 +14,7 @@ namespace MenuPokemon
         string _menu = "MENU";
 
 
-        inventory inventory = new();
+        Inventory inventory = new();
 
         enum index
         {

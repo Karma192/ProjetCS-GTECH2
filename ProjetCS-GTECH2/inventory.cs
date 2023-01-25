@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Objects;
 using Object = Objects.Object;
 
 namespace MenuPokemon
 {
-    internal class inventory
+    public class Inventory
     {
         Object[] objects;
+        Objects.Ammunitions amo = new();
+
+        Inventory()
+        {
+            AddToInventory(amo);
+        }
 
         public void ShowInventory()
         {
@@ -24,8 +29,8 @@ namespace MenuPokemon
 
         public void AddToInventory(Object obj)
         {
-            int lenght = objects.Length +1;
-            objects.SetValue(obj, lenght);
+            int index = objects.Length;
+            objects[index] = obj;
         }
     }
 }
