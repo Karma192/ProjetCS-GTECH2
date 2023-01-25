@@ -1,6 +1,7 @@
 using MenuPokemon;
 using pokehunter;
 using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace Program
@@ -10,25 +11,83 @@ namespace Program
 
         static void Main()
         {
+            Console.CursorVisible = false;
             ConsoleKeyInfo input = new();
-            Menu menu= new();
+            Menu menu = new();
             MapInit map = new();
             Player player = new();
-            Ennemi ennemi = new();
-            Fight fight = new();
-            
+            Ennemi e = new();
+            Fight f = new();
+            char move;
+            bool canMove = false;
 
             while (Open(input)) {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
                 map.InitTab();
                 menu.MenuUpdate(input); 
-                ennemi.DrawEnnemi();
-                player.Movement(input);
-                player.DrawPlayer(10, 50);
-                fight.StartFight(player, ennemi);
+                e.DrawEnnemi();
+                move = player.Getinput(input);
+                canMove = TestMovement(move, map, player);
+                if (canMove) 
+                {
+                    player.Mouvement(move);
+                }
+                player.DrawPlayer();
+                f.StartFight();
+
                 
             }
+        }
+
+        private static bool TestMovement(char move, MapInit map, Player player)
+        {
+            switch (move)
+            {
+                case 'U':
+                    if (map.tab[player.GetXPos(),player.GetYPos() - 1] == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                        return true;
+                    }
+                case 'D':
+                    if (map.tab[player.GetXPos(), player.GetYPos() + 1] == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                        return true;
+                    }
+                case 'L':
+                    if (map.tab[player.GetXPos() - 1, player.GetYPos()] == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                        return true;
+                    }
+                case 'R':
+                    if (map.tab[player.GetXPos() + 1, player.GetYPos()] == 1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+
+                        return true;
+                    }
+                default:
+                    break;
+            }
+            return false;
         }
 
         private static bool Open(ConsoleKeyInfo input)
@@ -39,11 +98,13 @@ namespace Program
                 if (Console.ReadKey().Key == ConsoleKey.Y)
                 {
                     return false;
-                } else
+                }
+                else
                 {
                     return true;
                 }
-            } else
+            }
+            else
             {
                 return true;
             }

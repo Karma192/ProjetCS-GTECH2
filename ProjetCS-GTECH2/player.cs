@@ -43,21 +43,37 @@ namespace pokehunter
             return _yPos;
         }
 
-        public void Movement(ConsoleKeyInfo input)
+        public char Getinput(ConsoleKeyInfo input)
         {
             
             switch (input.Key)
             {
                 case ConsoleKey.UpArrow:
+                    return 'U';
+                case ConsoleKey.DownArrow:
+                    return 'D';
+                case ConsoleKey.LeftArrow:
+                    return 'L';
+                case ConsoleKey.RightArrow:
+                    return 'R';
+                default:
+                    return '0';
+            }
+        }
+        public void Mouvement(char move)
+        {
+            switch (move)
+            {
+                case 'U':
                     _yPos = _yPos - 1;
                     break;
-                case ConsoleKey.DownArrow:
+                case 'D':
                     _yPos = _yPos + 1;
                     break;
-                case ConsoleKey.LeftArrow:
+                case 'L':
                     _xPos = _xPos - 1;
                     break;
-                case ConsoleKey.RightArrow:
+                case 'R':
                     _xPos = _xPos + 1;
                     break;
                 default:

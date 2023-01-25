@@ -14,7 +14,7 @@ namespace MenuPokemon
         string _menu = "MENU";
 
 
-        inventory inventory = new();
+        Inventory inventory = new();
 
         enum index
         {
@@ -36,6 +36,7 @@ namespace MenuPokemon
             if (input.Key == ConsoleKey.M)
             {
                 _active = !_active;
+                _index = 0;
             }
         }
 
@@ -64,7 +65,7 @@ namespace MenuPokemon
         {
             if (_active)
             {
-                DrawMenu();
+                DrawMenuBackground();
                 switch (_index)
                 {
                     case (int)index.INVENTORY:
@@ -79,6 +80,27 @@ namespace MenuPokemon
                         break;
                     case (int)index.MENU:
                         WriteTitleMenu(_menu);
+                        for (int i = 0; i < 4; i++)
+                        {
+                            Console.SetCursorPosition(2, (5 +(i * 2)));
+                            switch (i)
+                            {
+                                case (int)index.MENU:
+                                    Console.WriteLine("M : Close the menu");
+                                    break;
+                                case (int)index.INVENTORY:
+                                    Console.WriteLine("I : " + _inventory);
+                                    break;
+                                case (int)index.TEAM:
+                                    Console.WriteLine("T : " + _team);
+                                    break;
+                                case (int)index.SAVE:
+                                    Console.WriteLine("S : " + _save);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                         break;
                     default:
                         break;
@@ -86,7 +108,7 @@ namespace MenuPokemon
             }
         }
 
-        private void DrawMenu()
+        private void DrawMenuBackground()
         {
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < _height; i++)
@@ -101,7 +123,7 @@ namespace MenuPokemon
 
         private void WriteTitleMenu(string title)
         {
-            Console.SetCursorPosition((_width /2) - (title.ToCharArray().Length / 2), 1);
+            Console.SetCursorPosition((_width / 2) - (title.ToCharArray().Length / 2), 1);
             Console.WriteLine(title);
         }
     }
