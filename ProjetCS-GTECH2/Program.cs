@@ -13,9 +13,9 @@ namespace Program
             ConsoleKeyInfo input = new();
             Menu menu= new();
             MapInit map = new();
-            Player p = new();
-            Ennemi e = new();
-            Fight f = new();
+            Player player = new();
+            Ennemi ennemi = new();
+            Fight fight = new();
             
 
             while (Open(input)) {
@@ -23,10 +23,10 @@ namespace Program
                 Console.SetCursorPosition(0, 0);
                 map.InitTab();
                 menu.MenuUpdate(input); 
-                e.DrawEnnemi();
-                p.Movement(input);
-                p.DrawPlayer();
-                f.StartFight();
+                ennemi.DrawEnnemi();
+                player.Movement(input);
+                player.DrawPlayer();
+                fight.StartFight();
                 
             }
         }
