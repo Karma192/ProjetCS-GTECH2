@@ -25,8 +25,8 @@ namespace Program
                 menu.MenuUpdate(input); 
                 ennemi.DrawEnnemi();
                 player.Movement(input);
-                player.DrawPlayer();
-                fight.StartFight();
+                player.DrawPlayer(10, 50);
+                fight.StartFight(player, ennemi);
                 
             }
         }

@@ -13,10 +13,8 @@ namespace pokehunter
 
         }
 
-        public void StartFight()
+        public void StartFight(Player player, Ennemi ennemi)
         {
-            Player player = new();
-            Ennemi ennemi = new();
             
             int playerXPos = player.GetXPos();
             int playerYPos = player.GetYPos();
@@ -27,8 +25,15 @@ namespace pokehunter
             if(playerXPos == ennemiXPos && playerYPos == ennemiYPos)
             {
                 Console.Write("FIGHT");
+                DrawFight();
+                
 
             }
+        }
+
+        public void DrawFight() 
+        {
+            Console.Clear();
 
 
 
