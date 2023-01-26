@@ -10,8 +10,8 @@ namespace MenuPokemon
         const int _heightFight = 8;
         const int _widthFight = 118;
 
-        public bool _activeMenu;
-        public bool _fightMenu = true;
+        bool _activeMenu;
+        bool _fightMenu;
         int _index;
         int _indexBis;
         string _inventory = "INVENTORY";
@@ -21,6 +21,9 @@ namespace MenuPokemon
 
         Inventory inventory = new();
         Team team = new();
+
+        public bool FightMenu { get => _fightMenu; set => _fightMenu = value; }
+        public bool ActiveMenu { get => _activeMenu; set => _activeMenu = value; }
 
         enum indexMenu
         {
@@ -39,12 +42,12 @@ namespace MenuPokemon
 
         public void MenuUpdate(ConsoleKeyInfo input)
         {
-            ActiveMenu(input);
+            KeyActiveMenu(input);
             HandleKey(input);
             ShowMenu();
         }
 
-        private void ActiveMenu(ConsoleKeyInfo input)
+        private void KeyActiveMenu(ConsoleKeyInfo input)
         {
             if (input.Key == ConsoleKey.M && !_fightMenu)
             {
@@ -165,6 +168,7 @@ namespace MenuPokemon
                         inventory.ShowInventory();
                         break;
                     case (int)indexMenu.TEAM:
+                        team.ShowTeam();
                         break;
                     case (int)indexMenu.SAVE:
                         break;
