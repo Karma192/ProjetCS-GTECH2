@@ -1,5 +1,5 @@
 ﻿using Fighter;
-using Save;
+using GameSave;
 
 namespace MenuPokemon
 {

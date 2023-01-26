@@ -1,5 +1,6 @@
 using MenuPokemon;
 using pokehunter;
+using GameSave;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -18,6 +19,7 @@ namespace Program
             Player player = new();
             Ennemi ennemi = new();
             Fight fight = new();
+            Save save = new();
             char move;
             bool canMove = false;
             bool onFight = false;
@@ -55,7 +57,10 @@ namespace Program
                     player._player = " ";
                 }
 
-                
+                if (input.Key == ConsoleKey.L)
+                {
+                    save.DoSave();
+                }
             }
         }
 
