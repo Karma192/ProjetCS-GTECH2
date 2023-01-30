@@ -5,8 +5,8 @@ namespace pokehunter
 {
     public class Player
     {
-        int _yPos = 10;
-        int _xPos = 50;
+        int _yPos;
+        int _xPos;
 
         public string _player = "P";
 
@@ -15,12 +15,12 @@ namespace pokehunter
            
         }
 
-        public void DrawPlayer(int yPosInit, int xPosInit)
+        public void DrawPlayer(int x, int y)
         {
             if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
             {
-                _yPos = yPosInit;
-                 _xPos =  xPosInit;
+                _yPos = y;
+                 _xPos =  x;
             }
             Console.SetCursorPosition(_xPos, _yPos);
             Console.Write(_player);
@@ -39,8 +39,9 @@ namespace pokehunter
 
         public void SetPlayerPos(int x, int y)
         {
-            Console.SetCursorPosition(x, y);
-            Console.Write(_player);
+            /*Console.SetCursorPosition(x, y);
+            Console.Write(_player);*/
+            //DrawPlayer(x, y);
         }
 
 

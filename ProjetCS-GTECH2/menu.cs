@@ -1,5 +1,6 @@
 ﻿using Fighter;
 using GameSave;
+using pokehunter;
 
 namespace MenuPokemon
 {
@@ -40,10 +41,10 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public void MenuUpdate(ConsoleKeyInfo input)
+        public void MenuUpdate(ConsoleKeyInfo input, Save save, Player player)
         {
             KeyActiveMenu(input);
-            HandleKey(input);
+            HandleKey(input, save, player);
             ShowMenu();
         }
 
@@ -56,7 +57,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input)
+        private void HandleKey(ConsoleKeyInfo input, Save save, Player player)
         {
             if (_activeMenu)
             {
@@ -73,6 +74,9 @@ namespace MenuPokemon
                         {
                             _index++;
                         }
+                        break;
+                    case ConsoleKey.Enter:
+                        EnterAction(save, player);
                         break;
                     default:
                         break;
@@ -110,7 +114,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction();
+                        EnterAction(save, player);
                         break;
                     default:
                         break;
@@ -118,7 +122,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction()
+        private void EnterAction(Save save, Player player)
         {
             if (_activeMenu)
             {
@@ -129,6 +133,7 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
+                        save.DoSave(player); 
                         break;
                     default:
                         break;

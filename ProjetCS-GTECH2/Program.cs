@@ -20,13 +20,13 @@ namespace Program
             Player player = new();
             Ennemi ennemi = new();
             Fight fight = new();
-            //sceneMenu menuScene = new();
+            sceneMenu menuScene = new();
             Save save = new();
             char move;
             bool canMove = false;
             bool onFight = false;
 
-            //menuScene.SceneUpdate(input);
+            menuScene.SceneUpdate(input, save, player, mapManager);
 
             while (Open(input))
             {
@@ -44,7 +44,7 @@ namespace Program
                         mapManager.DrawMap();
                     }
                 }
-                menu.MenuUpdate(input);
+                menu.MenuUpdate(input, save, player);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
@@ -52,7 +52,7 @@ namespace Program
                 {
                     player.Mouvement(move);
                 }
-                player.DrawPlayer(10, 50);
+                player.DrawPlayer(50, 10);
                 onFight = fight.StartFight(player, ennemi);
                 if (onFight == false)
                 {

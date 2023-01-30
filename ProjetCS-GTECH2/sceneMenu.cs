@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameSave;
+using pokehunter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +22,7 @@ namespace ProjetCS_GTECH2
             SAVE = 1,
         }
 
-        public void SceneUpdate(ConsoleKeyInfo input)
+        public void SceneUpdate(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager)
         {
             SetTitle();
             AnimTitle();
@@ -28,7 +30,7 @@ namespace ProjetCS_GTECH2
             {
                 input = Console.ReadKey();
                 ShowTitle();
-                MenuStart(input);
+                MenuStart(input, save, player, mapManager);
                 SaveMenu(input);
             }
         }
@@ -71,9 +73,9 @@ namespace ProjetCS_GTECH2
             }
         }
 
-        private void MenuStart(ConsoleKeyInfo input)
+        private void MenuStart(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager)
         {
-            HandleKey(input);
+            HandleKey(input, save, player, mapManager);
             switch (_index)
             {
                 case (int)indexMenu.START:
@@ -104,7 +106,7 @@ namespace ProjetCS_GTECH2
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input)
+        private void HandleKey(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager)
         {
             switch (input.Key)
             {
@@ -124,6 +126,12 @@ namespace ProjetCS_GTECH2
                     if (_index == 0)
                     {
                         _continue = false;
+                    }
+                    if (_index == 1)
+                    {
+                        mapManager.ChangeMap(0);        
+                        save.ReadSave(player);
+                        _continue= false;
                     }
                     break;
             }

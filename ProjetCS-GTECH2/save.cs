@@ -30,7 +30,7 @@ namespace GameSave
             int x = Int32.Parse(r[0]);
             int y = Int32.Parse(r[1]);
 
-            player.SetPlayerPos(x, y);
+            player.DrawPlayer(x, y);
             
 
         }
