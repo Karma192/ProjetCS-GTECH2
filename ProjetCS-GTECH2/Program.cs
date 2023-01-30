@@ -15,8 +15,8 @@ namespace Program
         {
             Console.CursorVisible = false;
             ConsoleKeyInfo input = new();
+            MapManager mapManager = new();
             Menu menu = new();
-            MapInit map = new();
             Player player = new();
             Ennemi ennemi = new();
             Fight fight = new();
@@ -36,17 +36,18 @@ namespace Program
                 {
                     if (onFight == false)
                     {
-                        map.InitTab("ascii-art.txt");
+                        mapManager.DrawMap();
                     }
                     else
                     {
-                        map.InitTab("combat.txt");
+                        mapManager.ChangeMap(3);
+                        mapManager.DrawMap();
                     }
                 }
                 menu.MenuUpdate(input);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
-                canMove = TestMovement(move, map, player);
+                canMove = TestMovement(move, mapManager.GetMap(), player);
                 if (canMove && !menu.ActiveMenu && !menu.FightMenu && !onFight)
                 {
                     player.Mouvement(move);
@@ -74,7 +75,7 @@ namespace Program
             }
         }
 
-        private static bool TestMovement(char move, MapInit map, Player player)
+        private static bool TestMovement(char move, Map map, Player player)
         {
             switch (move)
             {
