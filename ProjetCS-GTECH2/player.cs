@@ -37,6 +37,13 @@ namespace pokehunter
             return _yPos;
         }
 
+        public void SetPlayerPos(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(_player);
+        }
+
+
         public char Getinput(ConsoleKeyInfo input)
         {
             

@@ -4,6 +4,7 @@ using GameSave;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using ProjetCS_GTECH2;
 
 namespace Program
 {
@@ -19,13 +20,13 @@ namespace Program
             Player player = new();
             Ennemi ennemi = new();
             Fight fight = new();
-            sceneMenu menuScene = new();
+            //sceneMenu menuScene = new();
             Save save = new();
             char move;
             bool canMove = false;
             bool onFight = false;
 
-            menuScene.SceneUpdate(input);
+            //menuScene.SceneUpdate(input);
 
             while (Open(input))
             {
@@ -64,7 +65,11 @@ namespace Program
 
                 if (input.Key == ConsoleKey.L)
                 {
-                    save.DoSave();
+                    save.DoSave(player);
+                }
+                if (input.Key == ConsoleKey.A)
+                {
+                    save.ReadSave(player);
                 }
             }
         }
