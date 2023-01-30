@@ -19,8 +19,6 @@ namespace pokehunter
         public void InitTab(string fileName)
         {
             String line;
-            try
-            {
                 StreamReader sr = new StreamReader(fileName);
                 line = sr.ReadLine();
                 j = 0;
@@ -92,13 +90,6 @@ namespace pokehunter
                 //close the file
                 sr.Close();
                 //Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-            }
-            finally
-            {
-            }
         }
     }
 }

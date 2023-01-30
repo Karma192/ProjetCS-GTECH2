@@ -1,5 +1,6 @@
 using MenuPokemon;
 using pokehunter;
+using GameSave;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -18,33 +19,53 @@ namespace Program
             Player player = new();
             Ennemi ennemi = new();
             Fight fight = new();
+            sceneMenu menuScene = new();
+            Save save = new();
             char move;
             bool canMove = false;
             bool onFight = false;
 
-            while (Open(input)) {
+            menuScene.SceneUpdate(input);
+
+            while (Open(input))
+            {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                if(onFight == false)
+                if (!menu.ActiveMenu)
                 {
-                    map.InitTab("ascii-art.txt");
+                    if (onFight == false)
+                    {
+                        map.InitTab("ascii-art.txt");
+                    }
+                    else
+                    {
+                        map.InitTab("combat.txt");
+                    }
                 }
-                else
-                {
-                    map.InitTab("combat.txt");
-                }
-                menu.MenuUpdate(input); 
+                menu.MenuUpdate(input);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
-                if (canMove) 
+                if (canMove && !menu.ActiveMenu && !menu.FightMenu && !onFight)
                 {
                     player.Mouvement(move);
                 }
-                player.DrawPlayer(10,50);
+                player.DrawPlayer(10, 50);
                 onFight = fight.StartFight(player, ennemi);
+                if (onFight == false)
+                {
+                    player._player = "P";
+                }
+                else
+                {
+                    player._player = " ";
+                    menu.FightMenu = true;
+                }
 
-                
+                if (input.Key == ConsoleKey.L)
+                {
+                    save.DoSave();
+                }
             }
         }
 
@@ -53,7 +74,7 @@ namespace Program
             switch (move)
             {
                 case 'U':
-                    if (map.tab[player.GetXPos(),player.GetYPos() - 1] == 1)
+                    if (map.tab[player.GetXPos(), player.GetYPos() - 1] == 1)
                     {
                         return false;
                     }

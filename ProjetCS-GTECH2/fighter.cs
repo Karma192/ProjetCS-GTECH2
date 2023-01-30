@@ -8,10 +8,36 @@ namespace Fighter
     public class Fighters
     {
         string _name;
+        int _health = 100;
+        string[] _attack = new string[4];
+        int _defense;
+
+        public string Name
+        {
+            get => _name;
+        }
+
+        public int Health
+        {
+            get => _health;
+            set => _health = value;
+        }
+
+        public string[] Attack
+        {
+            get => _attack;
+            set => _attack = value;
+        }
+
+        public Fighters(string name, int defense)
+        {
+            _name = name;
+            _defense = defense;
+        }
 
         public string ShowFighter()
         {
-            string show = _name;
+            string show = _name + " : Actual HP -> " + _health;
             return show;
         }
     }
