@@ -8,9 +8,11 @@ namespace ProjetCS_GTECH2
     internal class sceneMenu
     {
         string[] _title = new string[6];
-        string _start = "<< START >>";
-        string _save = "<< SAVE >>";
+        string _start = "START >>";
+        string _save = "SAVE >>";
+        bool _continue = true;
         int _index = 0;
+        //int _indexBis = 0;
 
         enum indexMenu
         {
@@ -22,10 +24,12 @@ namespace ProjetCS_GTECH2
         {
             SetTitle();
             AnimTitle();
-            while (Continue(input))
+            while (Continue(input) && _continue)
             {
+                input = Console.ReadKey();
                 ShowTitle();
                 MenuStart(input);
+                SaveMenu(input);
             }
         }
 
@@ -79,12 +83,24 @@ namespace ProjetCS_GTECH2
                     Console.WriteLine(_save);
                     break;
                 case (int)indexMenu.SAVE:
-                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(_start);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(_save);
                     Console.ForegroundColor = ConsoleColor.White;
                     break;
+            }
+        }
+
+        private void SaveMenu(ConsoleKeyInfo input)
+        {
+            Console.SetCursorPosition(15, 10);
+            if (_index == (int)indexMenu.SAVE)
+            {
+                Console.WriteLine("this is the save !");
+            } 
+            else
+            {
+                Console.WriteLine("                  ");
             }
         }
 
@@ -102,6 +118,12 @@ namespace ProjetCS_GTECH2
                     if (_index != 0)
                     {
                         _index--;
+                    }
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (_index == 0)
+                    {
+                        _continue = false;
                     }
                     break;
             }
