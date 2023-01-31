@@ -160,7 +160,7 @@ namespace MenuPokemon
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);
                         break;
                     case (int)indexFight.SWITCH:
-                        Console.WriteLine(team._fighters[_indexBis].Name);
+                        _indexActualFighter = _indexBis;
                         break;
                     case (int)indexFight.ESCAPE:
                         Console.WriteLine("You quit the fight...");
