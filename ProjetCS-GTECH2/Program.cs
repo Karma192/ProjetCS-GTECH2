@@ -1,8 +1,10 @@
 using MenuPokemon;
 using pokehunter;
+using GameSave;
 using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using ProjetCS_GTECH2;
 
 namespace Program
 {
@@ -13,38 +15,44 @@ namespace Program
         {
             Console.CursorVisible = false;
             ConsoleKeyInfo input = new();
+            MapManager mapManager = new();
             Menu menu = new();
-            MapInit map = new();
             Player player = new();
             Ennemi ennemi = new("Pikachu",60,20, 40);
             Fight fight = new();
+            sceneMenu menuScene = new();
+            Save save = new();
             char move;
             bool canMove = false;
             bool onFight = false;
 
-            while (Open(input)) {
+            menuScene.SceneUpdate(input, save, player, mapManager);
+
+            while (Open(input))
+            {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                if (!menu._activeMenu)
+                if (!menu.ActiveMenu)
                 {
                     if (onFight == false)
                     {
-                        map.InitTab("ascii-art.txt");
+                        mapManager.DrawMap();
                     }
                     else
                     {
-                        map.InitTab("combat.txt");
+                        mapManager.ChangeMap(3);
+                        mapManager.DrawMap();
                     }
-                }                
-                menu.MenuUpdate(input, ennemi); 
+                }
+                menu.MenuUpdate(input, save, player);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
-                canMove = TestMovement(move, map, player);
-                if (canMove && !menu._activeMenu && !menu._fightMenu && !onFight) 
+                canMove = TestMovement(move, mapManager.GetMap(), player);
+                if (canMove && !menu.ActiveMenu && !menu.FightMenu && !onFight)
                 {
                     player.Mouvement(move);
                 }
-                player.DrawPlayer(10,50);
+                player.DrawPlayer(50, 10);
                 onFight = fight.StartFight(player, ennemi);
                 if (onFight == false)
                 {
@@ -54,18 +62,26 @@ namespace Program
                 {
                     menu._fightMenu = true;
                     player._player = " ";
+                    menu.FightMenu = true;
                 }
 
-                
+                if (input.Key == ConsoleKey.L)
+                {
+                    save.DoSave(player);
+                }
+                if (input.Key == ConsoleKey.A)
+                {
+                    save.ReadSave(player);
+                }
             }
         }
 
-        private static bool TestMovement(char move, MapInit map, Player player)
+        private static bool TestMovement(char move, Map map, Player player)
         {
             switch (move)
             {
                 case 'U':
-                    if (map.tab[player.GetXPos(),player.GetYPos() - 1] == 1)
+                    if (map.tab[player.GetXPos(), player.GetYPos() - 1] == 1)
                     {
                         return false;
                     }

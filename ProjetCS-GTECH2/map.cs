@@ -1,16 +1,59 @@
 ﻿using System.Numerics;
 using System.IO;
+using System.Dynamic;
 
 namespace pokehunter
 {
+    internal class MapManager
+    {
+        int _actualMap;
+        Map _map = new();
 
+        enum map
+        {
+            VILLAGE = 0,
+            FOREST = 1,
+            CAVE = 2,
+            COMBAT = 3,
+        }
 
-    internal class MapInit
+        public MapManager() 
+        { 
+
+        }
+
+        public int actualMap() { return _actualMap; }
+        public Map GetMap() { return _map; }
+
+        public void DrawMap()
+        {
+            switch(_actualMap)
+            {
+                case (int)map.VILLAGE:
+                    _map.InitTab("ascii-art.txt");
+                    break;
+                case (int)map.FOREST: 
+                    break;
+                case (int)map.CAVE:
+                    break;
+                case (int)map.COMBAT:
+                    _map.InitTab("combat.txt");
+                    break;
+            }
+        }
+
+        public void ChangeMap(int map)
+        {
+            _actualMap = map;
+        }
+    }
+
+    internal class Map
     {
         public int[,] tab = new int[120, 29];
         int j = 0;
 
-        public void Reset()
+        private void Reset()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.BackgroundColor = ConsoleColor.Black;
