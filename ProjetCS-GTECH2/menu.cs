@@ -23,7 +23,7 @@ namespace MenuPokemon
         Inventory inventory = new();
         Team team = new();
         Capacity capa = new();
-        
+
 
         enum indexMenu
         {
@@ -142,15 +142,32 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_indexBis == 0)
                         {
-                            capa.NoScope(inventory, team._fighters[_indexActualFighter],ennemi);
-                            Console.WriteLine(ennemi.GetHealth());
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.NoScope(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1) 
+                            {
+                                capa.Stielhandgranate(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
                         }
                         else if (_indexBis == 1)
                         {
-                            capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
+                            capa.CoupDeCrosse(team._fighters[_indexActualFighter], ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
-
+                        else if (_indexBis == 2)
+                        {
+                            capa.AmericaFckYeah(team._fighters[_indexActualFighter]);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
+                        else if (_indexBis == 3)
+                        {
+                            capa.HeadShot(team._fighters[_indexActualFighter], ennemi);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
                         break;
                     case (int)indexFight.OBJECTS:
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);

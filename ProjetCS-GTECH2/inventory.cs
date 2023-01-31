@@ -10,10 +10,13 @@ namespace MenuPokemon
     {
          public Object[] _objects = new Object[3];
         Objects.Ammunitions _amo = new();
+        Objects.Grenade _grenade = new();
+        
         
         public Inventory()
         {
             _objects[0] = _amo;
+            _objects[1] = _grenade;
             
         }
 

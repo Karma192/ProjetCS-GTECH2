@@ -41,4 +41,13 @@ namespace Objects
             _maxQuantity = 40;
         }
     }
+    public class Grenade : Object
+    {
+        public Grenade()
+        {
+            _name = "Grenade";
+            _quantity = 10;
+            _maxQuantity = 10;
+        }
+    }
 }
