@@ -8,16 +8,14 @@ namespace MenuPokemon
 {
     public class Inventory
     {
-         public Object[] _objects = new Object[3];
+        public List <Object> _objects = new();
         Objects.Ammunitions _amo = new();
         Objects.Grenade _grenade = new();
         
         
         public Inventory()
         {
-            _objects[0] = _amo;
-            _objects[1] = _grenade;
-            
+            _objects.Add(_amo);
         }
 
         public string[] GetObjects()
