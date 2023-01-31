@@ -17,11 +17,6 @@ namespace pokehunter
             COMBAT = 3,
         }
 
-        public MapManager() 
-        { 
-
-        }
-
         public int actualMap() { return _actualMap; }
         public Map GetMap() { return _map; }
 
