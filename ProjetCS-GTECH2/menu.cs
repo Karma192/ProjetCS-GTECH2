@@ -1,6 +1,6 @@
 ﻿using Fighter;
 using pokehunter;
-using Save;
+using GameSave;
 
 namespace MenuPokemon
 {
