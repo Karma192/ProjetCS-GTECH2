@@ -18,7 +18,7 @@ namespace Program
             MapManager mapManager = new();
             Menu menu = new();
             Player player = new();
-            Ennemi ennemi = new();
+            Ennemi ennemi = new("Pikachu",60,20, 40);
             Fight fight = new();
             sceneMenu menuScene = new();
             Save save = new();
@@ -60,6 +60,7 @@ namespace Program
                 }
                 else
                 {
+                    menu._fightMenu = true;
                     player._player = " ";
                     menu.FightMenu = true;
                 }

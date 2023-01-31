@@ -11,6 +11,7 @@ namespace Fighter
         int _health = 100;
         string[] _attack = new string[4];
         int _defense;
+        int _damage;
 
         public string Name
         {
@@ -29,16 +30,21 @@ namespace Fighter
             set => _attack = value;
         }
 
-        public Fighters(string name, int defense)
+        public Fighters(string name, int defense, int damage)
         {
             _name = name;
             _defense = defense;
+            _damage = damage;
         }
 
         public string ShowFighter()
         {
             string show = _name + " : Actual HP -> " + _health;
             return show;
+        }
+        public int Getdamage() 
+        { 
+            return _damage; 
         }
     }
 }
