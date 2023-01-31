@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Object = Objects.Object;
 
@@ -11,16 +12,24 @@ namespace MenuPokemon
         public List <Object> _objects = new();
         Objects.Ammunitions _amo = new();
         Objects.Grenade _grenade = new();
+        Objects.Artifice _artifice= new();
+        Objects.Molotove _molotove= new();
+        Objects.IceGrenade _iceGrenade= new();
         
         
         public Inventory()
         {
             _objects.Add(_amo);
+            _objects.Add(_grenade);
+            _objects.Add(_artifice);
+            _objects.Add(_molotove);
+            _objects.Add(_iceGrenade);
         }
 
-        public string[] GetObjects()
+        public List<string> GetObjects()
         {
-            string[] objects = new string[4];
+           List<string> objects = new ();
+
             if (_objects != null)
             {
                 int i = 0;
@@ -28,7 +37,7 @@ namespace MenuPokemon
                 {
                     if (obj != null)
                     {
-                        objects[i] = obj.ShowObject();
+                        objects.Add(obj.ShowObject());
                         i++;
                     }
                 }

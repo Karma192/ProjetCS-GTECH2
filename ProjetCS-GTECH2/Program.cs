@@ -18,7 +18,7 @@ namespace Program
             MapManager mapManager = new();
             Menu menu = new();
             Player player = new();
-            Ennemi ennemi = new("Pikachu",60,20, 40);
+            Ennemi ennemi = new("Pikachu",60,20, 40, 5);
             Fight fight = new();
             sceneMenu menuScene = new();
             Save save = new();

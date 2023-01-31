@@ -50,4 +50,31 @@ namespace Objects
             _maxQuantity = 10;
         }
     }
+    public class Artifice : Object
+    {
+        public Artifice()
+        {
+            _name = "Artifice";
+            _quantity = 5;
+            _maxQuantity = 5;
+        }
+    }
+    public class Molotove : Object
+    {
+        public Molotove()
+        {
+            _name = "Cocktail Molotove";
+            _quantity = 5;
+            _maxQuantity = 5;
+        }
+    }
+    public class IceGrenade : Object
+    {
+        public IceGrenade()
+        {
+            _name = "Ice Grenade";
+            _quantity = 5;
+            _maxQuantity = 5;
+        }
+    }
 }

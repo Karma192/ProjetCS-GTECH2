@@ -55,13 +55,79 @@ namespace MenuPokemon
             int damageDeal = 0;
             if (inventory._objects[1]._quantity != 0)
             {
-                damageDeal = ennemi.GetHealth() - (fighters.Getdamage() + fighters.GetBuffDmg()) * 2;
+                damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
                 ennemi.SetHealth(damageDeal);
             }
             else
             {
                 Console.WriteLine("No more grenade.");
             }
+        }
+        public void Artifice(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        {
+
+            if (inventory._objects[2]._quantity != 0)
+            {
+                int buff = 0;
+                buff = 3;
+                fighters.SetBuffDmg(buff);
+            }
+            else
+            {
+                Console.WriteLine("No more grenade.");
+            }
+        }
+        public void Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        {
+            int damageDeal = 0;
+            if (inventory._objects[3]._quantity != 0)
+            {
+                damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.GetBuffDmg();
+                ennemi.SetBurn(true);
+                ennemi.SetHealth(damageDeal);
+            }
+            else
+            {
+                Console.WriteLine("No more Molotov.");
+            }
+        }
+        public void IceGrenade(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        {
+            int damageDeal = 0;
+            if (inventory._objects[4]._quantity != 0)
+            {
+                damageDeal = ennemi.GetHealth() - fighters.Getdamage()/2 + fighters.GetBuffDmg();
+                ennemi.SetDeBuff(2);
+                ennemi.SetHealth(damageDeal);
+            }
+            else
+            {
+                Console.WriteLine("No more Ice grenade.");
+            }
+        }
+        public void Uppercut(Fighters fighters, Ennemi ennemi)
+        {
+                int damageDeal = 0;
+                damageDeal = ennemi.GetHealth() - fighters.Getdamage()  + fighters.GetBuffDmg();
+                ennemi.SetHealth(damageDeal);
+        }
+        public void CoupDeQueue(Fighters fighters, Ennemi ennemi)
+        {
+            int damageDeal = 0;
+            damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
+            ennemi.SetHealth(damageDeal);
+        }
+        public void MawashiGeri(Fighters fighters, Ennemi ennemi)
+        {
+            int damageDeal = 0;
+            damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.Getdamage() /4 + fighters.GetBuffDmg();
+            ennemi.SetHealth(damageDeal);
+        }
+        public void Roulade(Fighters fighters, Ennemi ennemi)
+        {
+            int buff = 0;
+            buff = 5;
+            fighters.SetBuffDmg(buff);
         }
     }
 }
