@@ -18,13 +18,12 @@ namespace Program
             MapManager mapManager = new();
             Menu menu = new();
             Player player = new();
-            Ennemi ennemi = new("Pikachu",60,20, 40);
+            Ennemi ennemi = new("Pikachu", 60, 20, 40);
             Fight fight = new();
             sceneMenu menuScene = new();
             Save save = new();
             char move;
             bool canMove = false;
-            bool onFight = false;
 
             menuScene.SceneUpdate(input, save, player, mapManager);
 
@@ -32,43 +31,34 @@ namespace Program
             {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                if (!menu.SetActiveMenu)
-                {
-                    if (onFight == false)
-                    {
-                        mapManager.DrawMap();
-                    }
-                    else
-                    {
-                        mapManager.ChangeMap(3);
-                        mapManager.DrawMap();
-                    }
-                }
-                menu.MenuUpdate(input, ennemi, save, player); 
+                fight.DetectFight(player, ennemi, mapManager);
+                mapManager.DrawMap();
+                menu.MenuUpdate(input, ennemi, save, player, mapManager, fight);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
-                if (canMove && !menu.SetActiveMenu && !menu.SetFightMenu && !onFight)
+
+                if (canMove && !menu.GetActiveMenu && !menu.GetFightMenu && !fight.OnFight)
                 {
                     player.Mouvement(move);
                 }
+
                 player.DrawPlayer(50, 10);
-                onFight = fight.StartFight(player, ennemi);
-                if (onFight == false)
+
+                if (!fight.OnFight)
                 {
                     player._player = "P";
                 }
                 else
                 {
-                    menu.SetFightMenu = true;
                     player._player = " ";
-                    menu.SetFightMenu = true;
                 }
 
                 if (input.Key == ConsoleKey.L)
                 {
                     save.DoSave(player);
                 }
+
                 if (input.Key == ConsoleKey.A)
                 {
                     save.ReadSave(player);

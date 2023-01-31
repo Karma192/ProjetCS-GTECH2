@@ -39,9 +39,8 @@ namespace pokehunter
 
         public void SetPlayerPos(int x, int y)
         {
-            /*Console.SetCursorPosition(x, y);
-            Console.Write(_player);*/
-            //DrawPlayer(x, y);
+            _xPos= x;
+            _yPos= y;
         }
 
 

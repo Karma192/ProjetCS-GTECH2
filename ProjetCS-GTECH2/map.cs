@@ -7,9 +7,10 @@ namespace pokehunter
     internal class MapManager
     {
         int _actualMap;
+        int _postFightMap;
         Map _map = new();
 
-        enum map
+        enum mapIndex
         {
             VILLAGE = 0,
             FOREST = 1,
@@ -24,21 +25,31 @@ namespace pokehunter
         {
             switch(_actualMap)
             {
-                case (int)map.VILLAGE:
+                case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
                     break;
-                case (int)map.FOREST: 
+                case (int)mapIndex.FOREST: 
                     break;
-                case (int)map.CAVE:
+                case (int)mapIndex.CAVE:
                     break;
-                case (int)map.COMBAT:
+                case (int)mapIndex.COMBAT:
                     _map.InitTab("combat.txt");
                     break;
             }
         }
 
+        public void QuitFight()
+        {
+            _actualMap = _postFightMap;
+
+        }
+
         public void ChangeMap(int map)
         {
+            if (map == (int)mapIndex.COMBAT)
+            {
+                _postFightMap = _actualMap;
+            }
             _actualMap = map;
         }
     }

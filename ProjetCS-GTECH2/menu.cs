@@ -43,13 +43,21 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public bool SetActiveMenu { get => _activeMenu; set => _activeMenu = value; }
-        public bool SetFightMenu { get => _fightMenu; set => _fightMenu = value; }
+        public bool GetActiveMenu { get => _activeMenu; }
+        public bool GetFightMenu { get => _fightMenu; }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, 
+            MapManager mapManager, Fight fight)
         {
+            if (!_activeMenu && !_fightMenu)
+            {
+                _index= 0;
+                _indexBis = 0;
+            }
+
+            _fightMenu = fight.OnFight;
             ActiveMenu(input);
-            HandleKey(input, ennemi, save, player);
+            HandleKey(input, ennemi, save, player, mapManager, fight);
             ShowMenu();
         }
 
@@ -62,7 +70,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -81,7 +89,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player);
+                        EnterAction(ennemi, save, player, mapManager, fight);
                         break;
                     default:
                         break;
@@ -119,7 +127,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player);
+                        EnterAction(ennemi, save, player, mapManager, fight);
                         break;
                     default:
                         break;
@@ -127,7 +135,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Ennemi ennemi, Save save, Player player)
+        private void EnterAction(Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -152,12 +160,12 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_indexBis == 0)
                         {
-                            capa.NoScope(inventory, team._fighters[_indexActualFighter],ennemi);
+                            capa.NoScope(inventory, team.Fighters[_indexActualFighter],ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
                         else if (_indexBis == 1)
                         {
-                            capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
+                            capa.CoupDeCrosse(team.Fighters[_indexActualFighter],ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
                         break;
@@ -170,6 +178,7 @@ namespace MenuPokemon
                     case (int)indexFight.ESCAPE:
                         Console.WriteLine("You quit the fight...");
                         _fightMenu = false;
+                        fight.QuitFight(mapManager, player);
                         break;
                 }
 
@@ -184,7 +193,7 @@ namespace MenuPokemon
                     {
                         //ennemi.atk[rand.Next(0, 3)]
                         Console.WriteLine(ennemi.Name + " hurt you !");
-                        team._fighters[_indexActualFighter].Health -= 10;
+                        team.Fighters[_indexActualFighter].Health -= 10;
                     } 
                     else if (random == 1)
                     {
@@ -195,9 +204,9 @@ namespace MenuPokemon
                     {
                         Console.WriteLine(ennemi.Name + " miss his attack !");
                     }
-
-                    _ennemyTurn = false;
                 }
+
+                _ennemyTurn = false;
             }
         }
 
@@ -327,7 +336,7 @@ namespace MenuPokemon
                     case (int)indexFight.SWITCH:
                         if (_index == (int)indexFight.SWITCH)
                         {
-                            _indexBisLimMax = team._fighters.Length - 1;
+                            _indexBisLimMax = team.Fighters.Length - 1;
                             ShowSwitch();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -352,7 +361,7 @@ namespace MenuPokemon
 
         private void ShowAttack()
         {
-            string[] atk = team._fighters[_indexActualFighter].Attack;
+            string[] atk = team.Fighters[_indexActualFighter].Attack;
             int i = 23;
             foreach (string s in atk)
             {
@@ -421,9 +430,9 @@ namespace MenuPokemon
         private void ShowSwitch()
         {
             string[] mates = new string[3];
-            mates[0] = team._fighters[0].Name;
-            mates[1] = team._fighters[1].Name;
-            mates[2] = team._fighters[2].Name;
+            mates[0] = team.Fighters[0].Name;
+            mates[1] = team.Fighters[1].Name;
+            mates[2] = team.Fighters[2].Name;
 
             int i = 23;
             foreach (string s in mates)
