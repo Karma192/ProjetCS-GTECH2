@@ -28,8 +28,8 @@ namespace ProjetCS_GTECH2
             AnimTitle();
             while (Continue(input) && _continue)
             {
-                input = Console.ReadKey();
                 ShowTitle();
+                input = Console.ReadKey();
                 MenuStart(input, save, player, mapManager);
                 SaveMenu(input);
             }
@@ -47,17 +47,16 @@ namespace ProjetCS_GTECH2
 
         private void AnimTitle()
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 3; j++)
             {
                 int i = 0;
                 foreach (var item in _title)
                 {
-                    Thread.Sleep(200 - (j * 20));
+                    Thread.Sleep(100 - (j * 20));
                     Console.SetCursorPosition(5, i + 1);
                     Console.WriteLine(item);
                     i++;
                 }
-                Thread.Sleep(50);
                 Console.Clear();
             }
         }

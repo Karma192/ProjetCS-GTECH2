@@ -12,13 +12,16 @@ namespace MenuPokemon
         const int _widthFight = 118;
 
         bool _activeMenu;
-        bool _fightMenu = false;
+        bool _fightMenu;
+        bool _ennemyTurn;
         int _index;
         int _indexBis;
+        int _indexBisLimMin = 0;
+        int _indexBisLimMax;
+        int _indexActualFighter = 0;
         string _inventory = "INVENTORY";
         string _save = "SAVE";
         string _team = "TEAM";
-        int _indexActualFighter = 0;
 
         Inventory inventory = new();
         Team team = new();
@@ -43,7 +46,7 @@ namespace MenuPokemon
         public bool SetActiveMenu { get => _activeMenu; set => _activeMenu = value; }
         public bool SetFightMenu { get => _fightMenu; set => _fightMenu = value; }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi)
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
         {
             ActiveMenu(input);
             HandleKey(input, ennemi, save, player);
@@ -104,13 +107,13 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.LeftArrow:
-                        if (_indexBis != 0)
+                        if (_indexBis != _indexBisLimMin)
                         {
                             _indexBis--;
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (_indexBis != 3)
+                        if (_indexBis != _indexBisLimMax)
                         {
                             _indexBis++;
                         }
@@ -157,7 +160,6 @@ namespace MenuPokemon
                             capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
-
                         break;
                     case (int)indexFight.OBJECTS:
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);
@@ -169,6 +171,32 @@ namespace MenuPokemon
                         Console.WriteLine("You quit the fight...");
                         _fightMenu = false;
                         break;
+                }
+
+                _ennemyTurn = true;
+
+                if (_ennemyTurn && _fightMenu)
+                {
+                    Console.SetCursorPosition(1, 30);
+                    Random rand = new();
+                    int random = rand.Next(1, 100);
+                    if ( random > 50 )
+                    {
+                        //ennemi.atk[rand.Next(0, 3)]
+                        Console.WriteLine(ennemi.Name + " hurt you !");
+                        team._fighters[_indexActualFighter].Health -= 10;
+                    } 
+                    else if (random == 1)
+                    {
+                        Console.WriteLine(ennemi.Name + " escape.");
+                        _fightMenu = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine(ennemi.Name + " miss his attack !");
+                    }
+
+                    _ennemyTurn = false;
                 }
             }
         }
@@ -277,6 +305,7 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_index == (int)indexFight.ATTACK)
                         {
+                            _indexBisLimMax = 3;
                             ShowAttack();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -287,6 +316,7 @@ namespace MenuPokemon
                     case (int)indexFight.OBJECTS:
                         if (_index == (int)indexFight.OBJECTS)
                         {
+                            _indexBisLimMax = inventory._objects.Count - 1;
                             ShowObjects();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -297,6 +327,7 @@ namespace MenuPokemon
                     case (int)indexFight.SWITCH:
                         if (_index == (int)indexFight.SWITCH)
                         {
+                            _indexBisLimMax = team._fighters.Length - 1;
                             ShowSwitch();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }

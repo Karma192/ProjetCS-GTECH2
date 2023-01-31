@@ -23,6 +23,8 @@ namespace pokehunter
             Console.Write("E");
         }
 
+        public string Name { get { return _name; } }
+
         public int GetXPos()
         {
             return _xPos;
