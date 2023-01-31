@@ -1,4 +1,5 @@
 ﻿using Fighter;
+using pokehunter;
 using Save;
 
 namespace MenuPokemon
@@ -11,7 +12,7 @@ namespace MenuPokemon
         const int _widthFight = 118;
 
         public bool _activeMenu;
-        public bool _fightMenu = true;
+        public bool _fightMenu = false;
         int _index;
         int _indexBis;
         string _inventory = "INVENTORY";
@@ -21,6 +22,8 @@ namespace MenuPokemon
 
         Inventory inventory = new();
         Team team = new();
+        Capacity capa = new();
+        
 
         enum indexMenu
         {
@@ -37,10 +40,10 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public void MenuUpdate(ConsoleKeyInfo input)
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi)
         {
             ActiveMenu(input);
-            HandleKey(input);
+            HandleKey(input, ennemi);
             ShowMenu();
         }
 
@@ -53,7 +56,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi)
         {
             if (_activeMenu)
             {
@@ -107,7 +110,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction();
+                        EnterAction(ennemi);
                         break;
                     default:
                         break;
@@ -115,7 +118,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction()
+        private void EnterAction(Ennemi ennemi)
         {
             if (_activeMenu)
             {
@@ -137,7 +140,17 @@ namespace MenuPokemon
                 switch (_index)
                 {
                     case (int)indexFight.ATTACK:
-                        Console.WriteLine(team._fighters[_indexActualFighter].Attack[_indexBis]);
+                        if (_indexBis == 0)
+                        {
+                            capa.NoScope(inventory, team._fighters[_indexActualFighter],ennemi);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
+                        else if (_indexBis == 1)
+                        {
+                            capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
+
                         break;
                     case (int)indexFight.OBJECTS:
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);

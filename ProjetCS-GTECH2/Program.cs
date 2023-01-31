@@ -16,7 +16,7 @@ namespace Program
             Menu menu = new();
             MapInit map = new();
             Player player = new();
-            Ennemi ennemi = new();
+            Ennemi ennemi = new("Pikachu",60,20, 40);
             Fight fight = new();
             char move;
             bool canMove = false;
@@ -36,7 +36,7 @@ namespace Program
                         map.InitTab("combat.txt");
                     }
                 }                
-                menu.MenuUpdate(input); 
+                menu.MenuUpdate(input, ennemi); 
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, map, player);
@@ -52,6 +52,7 @@ namespace Program
                 }
                 else
                 {
+                    menu._fightMenu = true;
                     player._player = " ";
                 }
 
