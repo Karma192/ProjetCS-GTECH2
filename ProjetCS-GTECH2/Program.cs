@@ -44,7 +44,7 @@ namespace Program
                         mapManager.DrawMap();
                     }
                 }
-                menu.MenuUpdate(input, ennemi);
+                menu.MenuUpdate(input, ennemi, save, player); 
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);

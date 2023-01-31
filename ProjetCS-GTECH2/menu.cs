@@ -46,7 +46,7 @@ namespace MenuPokemon
         public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi)
         {
             ActiveMenu(input);
-            HandleKey(input, ennemi);
+            HandleKey(input, ennemi, save, player);
             ShowMenu();
         }
 
@@ -59,7 +59,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
         {
             if (_activeMenu)
             {
@@ -76,6 +76,9 @@ namespace MenuPokemon
                         {
                             _index++;
                         }
+                        break;
+                    case ConsoleKey.Enter:
+                        EnterAction(ennemi, save, player);
                         break;
                     default:
                         break;
@@ -113,7 +116,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi);
+                        EnterAction(ennemi, save, player);
                         break;
                     default:
                         break;
@@ -121,7 +124,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Ennemi ennemi)
+        private void EnterAction(Ennemi ennemi, Save save, Player player)
         {
             if (_activeMenu)
             {
@@ -132,6 +135,7 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
+                        save.DoSave(player);
                         break;
                     default:
                         break;
