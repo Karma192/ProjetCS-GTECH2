@@ -37,7 +37,8 @@ namespace Objects
         public Ammunitions()
         {
             _name = "Ammunitions";
-            _quantity = 0;
+            _quantity = 40;
+            _maxQuantity = 40;
         }
     }
 }

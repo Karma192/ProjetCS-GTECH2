@@ -1,6 +1,6 @@
 ﻿using Fighter;
-using GameSave;
 using pokehunter;
+using Save;
 
 namespace MenuPokemon
 {
@@ -11,8 +11,8 @@ namespace MenuPokemon
         const int _heightFight = 8;
         const int _widthFight = 118;
 
-        bool _activeMenu;
-        bool _fightMenu;
+        public bool _activeMenu;
+        public bool _fightMenu = false;
         int _index;
         int _indexBis;
         string _inventory = "INVENTORY";
@@ -22,9 +22,8 @@ namespace MenuPokemon
 
         Inventory inventory = new();
         Team team = new();
-
-        public bool FightMenu { get => _fightMenu; set => _fightMenu = value; }
-        public bool ActiveMenu { get => _activeMenu; set => _activeMenu = value; }
+        Capacity capa = new();
+        
 
         enum indexMenu
         {
@@ -41,14 +40,14 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Save save, Player player)
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi)
         {
-            KeyActiveMenu(input);
-            HandleKey(input, save, player);
+            ActiveMenu(input);
+            HandleKey(input, ennemi);
             ShowMenu();
         }
 
-        private void KeyActiveMenu(ConsoleKeyInfo input)
+        private void ActiveMenu(ConsoleKeyInfo input)
         {
             if (input.Key == ConsoleKey.M && !_fightMenu)
             {
@@ -57,7 +56,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Save save, Player player)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi)
         {
             if (_activeMenu)
             {
@@ -74,9 +73,6 @@ namespace MenuPokemon
                         {
                             _index++;
                         }
-                        break;
-                    case ConsoleKey.Enter:
-                        EnterAction(save, player);
                         break;
                     default:
                         break;
@@ -114,7 +110,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(save, player);
+                        EnterAction(ennemi);
                         break;
                     default:
                         break;
@@ -122,7 +118,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Save save, Player player)
+        private void EnterAction(Ennemi ennemi)
         {
             if (_activeMenu)
             {
@@ -133,7 +129,6 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
-                        save.DoSave(player); 
                         break;
                     default:
                         break;
@@ -145,7 +140,17 @@ namespace MenuPokemon
                 switch (_index)
                 {
                     case (int)indexFight.ATTACK:
-                        Console.WriteLine(team._fighters[_indexActualFighter].Attack[_indexBis]);
+                        if (_indexBis == 0)
+                        {
+                            capa.NoScope(inventory, team._fighters[_indexActualFighter],ennemi);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
+                        else if (_indexBis == 1)
+                        {
+                            capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
+                            Console.WriteLine(ennemi.GetHealth());
+                        }
+
                         break;
                     case (int)indexFight.OBJECTS:
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);
@@ -173,7 +178,6 @@ namespace MenuPokemon
                         inventory.ShowInventory();
                         break;
                     case (int)indexMenu.TEAM:
-                        team.ShowTeam();
                         break;
                     case (int)indexMenu.SAVE:
                         break;

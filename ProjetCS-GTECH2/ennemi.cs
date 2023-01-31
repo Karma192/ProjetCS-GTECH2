@@ -1,15 +1,20 @@
 ﻿
 
-namespace Program
+namespace pokehunter
 {
     public class Ennemi
     {
-        int _xPos = 60;
-        int _yPos = 20;
+        int _xPos;
+        int _yPos;
+        string _name;
+        public int _health;
 
-        public Ennemi()
+        public Ennemi(string name, int xPos, int yPos, int heath)
         {
-
+            _name = name;
+            _xPos = xPos;
+            _yPos = yPos;
+            _health = heath;
         }
 
         public void DrawEnnemi()
@@ -18,13 +23,21 @@ namespace Program
             Console.Write("E");
         }
 
-        public int GetXPos() 
+        public int GetXPos()
         {
             return _xPos;
         }
-        public int GetYPos() 
+        public int GetYPos()
         {
             return _yPos;
+        }
+        public int GetHealth()
+        {
+            return _health;
+        }
+        public void SetHealth(int health) 
+        {
+            _health = health;
         }
     }
 }
