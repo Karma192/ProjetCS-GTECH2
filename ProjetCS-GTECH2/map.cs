@@ -6,7 +6,7 @@ namespace pokehunter
 {
     internal class MapManager
     {
-        int _actualMap;
+        int _actualMap = 2;
         int _postFightMap;
         Map _map = new();
 
@@ -28,9 +28,11 @@ namespace pokehunter
                 case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
                     break;
-                case (int)mapIndex.FOREST: 
+                case (int)mapIndex.FOREST:
+                    _map.InitTab("forestMap.txt");
                     break;
                 case (int)mapIndex.CAVE:
+                    _map.InitTab("caveMap.txt");
                     break;
                 case (int)mapIndex.COMBAT:
                     _map.InitTab("combat.txt");
