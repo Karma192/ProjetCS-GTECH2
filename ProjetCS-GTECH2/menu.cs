@@ -11,8 +11,8 @@ namespace MenuPokemon
         const int _heightFight = 8;
         const int _widthFight = 118;
 
-        public bool _activeMenu;
-        public bool _fightMenu = false;
+        bool _activeMenu;
+        bool _fightMenu = false;
         int _index;
         int _indexBis;
         string _inventory = "INVENTORY";
@@ -39,6 +39,9 @@ namespace MenuPokemon
             SWITCH = 2,
             ESCAPE = 3,
         }
+
+        public bool SetActiveMenu { get => _activeMenu; set => _activeMenu = value; }
+        public bool SetFightMenu { get => _fightMenu; set => _fightMenu = value; }
 
         public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi)
         {
