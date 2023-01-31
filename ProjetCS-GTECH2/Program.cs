@@ -32,7 +32,7 @@ namespace Program
             {
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
-                if (!menu.ActiveMenu)
+                if (!menu._activeMenu)
                 {
                     if (onFight == false)
                     {
@@ -44,11 +44,11 @@ namespace Program
                         mapManager.DrawMap();
                     }
                 }
-                menu.MenuUpdate(input, save, player);
+                menu.MenuUpdate(input, ennemi);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
-                if (canMove && !menu.ActiveMenu && !menu.FightMenu && !onFight)
+                if (canMove && !menu._activeMenu && !menu._fightMenu && !onFight)
                 {
                     player.Mouvement(move);
                 }
@@ -62,7 +62,7 @@ namespace Program
                 {
                     menu._fightMenu = true;
                     player._player = " ";
-                    menu.FightMenu = true;
+                    menu._fightMenu = true;
                 }
 
                 if (input.Key == ConsoleKey.L)
