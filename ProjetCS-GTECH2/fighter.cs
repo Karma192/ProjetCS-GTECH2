@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Fighter
 {
@@ -28,6 +29,14 @@ namespace Fighter
         {
             get => _attack;
             set => _attack = value;
+        }
+
+        [JsonConstructorAttribute]
+        public Fighters(string name, int health, string[] attack)
+        {
+            _name= name;
+            _health = health;
+            _attack = attack;
         }
 
         public Fighters(string name, int defense, int damage)

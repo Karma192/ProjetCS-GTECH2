@@ -8,7 +8,7 @@ namespace MenuPokemon
 {
     public class Inventory
     {
-         public Object[] _objects = new Object[3];
+        public Object[] _objects = new Object[3];
         Objects.Ammunitions _amo = new();
         
         public Inventory()

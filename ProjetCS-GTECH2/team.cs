@@ -9,14 +9,14 @@ namespace MenuPokemon
     internal class Team
     {
         public Fighters[] _fighters = new Fighters[3];
-        Fighters _chassaing = new("CHASSAING", 14 ,4);
+        Fighters _chassaing = new("CHASSAING", 14, 4);
         Fighters _cyrian = new("CYRIAN", 12, 5);
         Fighters _karma = new("KARMA", 22, 2);
 
         public Team()
         {
             _fighters[0] = _chassaing;
-            string[] atkChassaing = { "3.6 NoScope","Cou2Cross","America F*ck YEAH","Headshot" };
+            string[] atkChassaing = { "3.6 NoScope", "Cou2Cross", "America F*ck YEAH", "Headshot" };
             _fighters[0].Attack = atkChassaing;
             _fighters[1] = _cyrian;
             string[] atkCyrian = { "Stielhandgranate 24", "feux d’artifice", "cocktail molotov", "Grenade de glace" };
@@ -24,6 +24,11 @@ namespace MenuPokemon
             _fighters[2] = _karma;
             string[] atkKarma = { "uppercut", "coup de queue", "Mawashi-geri", "roulade" };
             _fighters[2].Attack = atkKarma;
+        }
+
+        public Fighters[] GetTeam() 
+        {
+            return _fighters;
         }
 
         public void ShowTeam()

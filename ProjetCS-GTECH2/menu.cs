@@ -40,10 +40,10 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager)
         {
             ActiveMenu(input);
-            HandleKey(input, ennemi, save, player);
+            HandleKey(input, ennemi, save, player, mapManager);
             ShowMenu();
         }
 
@@ -56,7 +56,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager)
         {
             if (_activeMenu)
             {
@@ -75,7 +75,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player);
+                        EnterAction(ennemi, save, player, mapManager);
                         break;
                     default:
                         break;
@@ -113,7 +113,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player);
+                        EnterAction(ennemi, save, player, mapManager);
                         break;
                     default:
                         break;
@@ -121,7 +121,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Ennemi ennemi, Save save, Player player)
+        private void EnterAction(Ennemi ennemi, Save save, Player player, MapManager mapManager)
         {
             if (_activeMenu)
             {
@@ -132,7 +132,7 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
-                        save.DoSave(player);
+                        save.DoSave(player, team, mapManager, inventory);
                         break;
                     default:
                         break;

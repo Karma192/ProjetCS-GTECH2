@@ -44,7 +44,7 @@ namespace Program
                         mapManager.DrawMap();
                     }
                 }
-                menu.MenuUpdate(input, ennemi, save, player); 
+                menu.MenuUpdate(input, ennemi, save, player, mapManager); 
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
@@ -65,14 +65,6 @@ namespace Program
                     menu._fightMenu = true;
                 }
 
-                if (input.Key == ConsoleKey.L)
-                {
-                    save.DoSave(player);
-                }
-                if (input.Key == ConsoleKey.A)
-                {
-                    save.ReadSave(player);
-                }
             }
         }
 
