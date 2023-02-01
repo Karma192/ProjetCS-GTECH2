@@ -146,12 +146,12 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_indexBis == 0)
                         {
-                            capa.NoScope(inventory, team._fighters[_indexActualFighter],ennemi);
+                            capa.NoScope(inventory, team.Fighters[_indexActualFighter],ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
                         else if (_indexBis == 1)
                         {
-                            capa.CoupDeCrosse(team._fighters[_indexActualFighter],ennemi);
+                            capa.CoupDeCrosse(team.Fighters[_indexActualFighter],ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
 
@@ -318,7 +318,7 @@ namespace MenuPokemon
 
         private void ShowAttack()
         {
-            string[] atk = team._fighters[_indexActualFighter].Attack;
+            string[] atk = team.Fighters[_indexActualFighter].Attack;
             int i = 23;
             foreach (string s in atk)
             {
@@ -387,9 +387,9 @@ namespace MenuPokemon
         private void ShowSwitch()
         {
             string[] mates = new string[3];
-            mates[0] = team._fighters[0].Name;
-            mates[1] = team._fighters[1].Name;
-            mates[2] = team._fighters[2].Name;
+            mates[0] = team.Fighters[0].Name;
+            mates[1] = team.Fighters[1].Name;
+            mates[2] = team.Fighters[2].Name;
 
             int i = 23;
             foreach (string s in mates)

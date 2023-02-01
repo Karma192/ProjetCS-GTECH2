@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using Object = Objects.Object;
 
 namespace MenuPokemon
 {
     public class Inventory
     {
+        [JsonInclude]
         public Object[] _objects = new Object[3];
-        Objects.Ammunitions _amo = new();
+        [JsonInclude]
+        public Objects.Ammunitions _amo = new();
         
         public Inventory()
         {

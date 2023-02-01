@@ -1,12 +1,15 @@
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace pokehunter
 {
     public class Player
     {
-        int _yPos;
-        int _xPos;
+        [JsonInclude]
+        public int _yPos;
+        [JsonInclude]
+        public int _xPos;
 
         public string _player = "P";
 

@@ -1,1 +1,16 @@
-{}
+{
+    "_objects": [
+        {
+            "_name": "Ammunitions",
+            "_quantity": 40,
+            "_maxQuantity": 40
+        },
+        null,
+        null
+    ],
+    "_amo": {
+        "_name": "Ammunitions",
+        "_quantity": 40,
+        "_maxQuantity": 40
+    }
+}

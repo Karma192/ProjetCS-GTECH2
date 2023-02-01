@@ -15,21 +15,25 @@ namespace GameSave
 
         public void DoSave(Player player, Team team, MapManager mapManager, Inventory inventory)
         {
-       
+            var option = new JsonSerializerOptions()
+            {
+                IncludeFields = true,
+            };
+
             string fileName = @"D:\projet c#\ProjetCS-GTECH2\save\save_fighter.json";
-            string jsonString = JsonSerializer.Serialize(team._fighters);
+            string jsonString = JsonSerializer.Serialize(team.Fighters, option);
             File.WriteAllText(fileName, jsonString);
 
             string fileName1 = @"D:\projet c#\ProjetCS-GTECH2\save\save_inventory.json";
-            string jsonString1 = JsonSerializer.Serialize(inventory);
+            string jsonString1 = JsonSerializer.Serialize(inventory, option);
             File.WriteAllText(fileName1, jsonString1);
 
             string fileName2 = @"D:\projet c#\ProjetCS-GTECH2\save\save_map.json";
-            string jsonString2 = JsonSerializer.Serialize(mapManager.ActualMap());
+            string jsonString2 = JsonSerializer.Serialize(mapManager.ActualMap(), option);
             File.WriteAllText(fileName2, jsonString2);
 
             string fileName3 = @"D:\projet c#\ProjetCS-GTECH2\save\save_playerpos.json";
-            string jsonString3 = JsonSerializer.Serialize(player);
+            string jsonString3 = JsonSerializer.Serialize(player, option);
             File.WriteAllText(fileName3, jsonString3);
 
             //string playerPos = $"{player.GetXPos()} {player.GetYPos()} {team._fighters} {mapManager.ActualMap()} {inventory.GetObjects()}";
