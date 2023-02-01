@@ -387,7 +387,7 @@ namespace MenuPokemon
                     case (int)indexFight.OBJECTS:
                         if (_index == (int)indexFight.OBJECTS)
                         {
-                            _indexBisLimMax = inventory._objects.Count - 1;
+                            _indexBisLimMax = inventory.Objects.Count - 1;
                             ShowObjects();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }

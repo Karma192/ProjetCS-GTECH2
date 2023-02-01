@@ -49,15 +49,15 @@ namespace GameSave
 
             string fileName1 = @"D:\projet c#\ProjetCS-GTECH2\save\save_inventory.json";
             string jsonString1 = File.ReadAllText(fileName1);
-            Inventory inventory = JsonSerializer.Deserialize<Inventory>(jsonString)!;
+            Inventory inventory = JsonSerializer.Deserialize<Inventory>(jsonString1)!;
 
             string fileName2 = @"D:\projet c#\ProjetCS-GTECH2\save\save_map.json";
             string jsonString2 = File.ReadAllText(fileName2);
-            int mapManager = JsonSerializer.Deserialize<int>(jsonString)!;
+            int mapManager = JsonSerializer.Deserialize<int>(jsonString2)!;
 
             string fileName3 = @"D:\projet c#\ProjetCS-GTECH2\save\save_playerpos.json";
             string jsonString3 = File.ReadAllText(fileName3);
-            player = JsonSerializer.Deserialize<Player>(jsonString)!;
+            player = JsonSerializer.Deserialize<Player>(jsonString3)!;
 
         }
     }

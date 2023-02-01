@@ -1,16 +1,1 @@
-{
-    "_objects": [
-        {
-            "_name": "Ammunitions",
-            "_quantity": 40,
-            "_maxQuantity": 40
-        },
-        null,
-        null
-    ],
-    "_amo": {
-        "_name": "Ammunitions",
-        "_quantity": 40,
-        "_maxQuantity": 40
-    }
-}
+{"_amo":{"_name":"Ammunitions","_quantity":40,"_maxQuantity":40},"_grenade":{"_name":"Grenade","_quantity":10,"_maxQuantity":10},"_artifice":{"_name":"Artifice","_quantity":5,"_maxQuantity":5},"_molotove":{"_name":"Cocktail Molotove","_quantity":5,"_maxQuantity":5},"_iceGrenade":{"_name":"Ice Grenade","_quantity":5,"_maxQuantity":5}}

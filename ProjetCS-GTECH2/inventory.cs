@@ -11,16 +11,24 @@ namespace MenuPokemon
 {
     public class Inventory
     {
-        [JsonInclude]
-        public List <Object> _objects = new();
-        
+        [JsonIgnore] List<Object> objects = new();
+
+        [JsonInclude] public Objects.Ammunitions _amo = new();
+        [JsonInclude] public Objects.Grenade _grenade = new();
+        [JsonInclude] public Objects.Artifice _artifice = new();
+        [JsonInclude] public Objects.Molotove _molotove = new();
+        [JsonInclude] public Objects.IceGrenade _iceGrenade = new();
+
+        [JsonIgnore]
+        public List<Object> Objects { get => objects;}
+
         public Inventory()
         {
-            _objects.Add(new Objects.Ammunitions());
-            _objects.Add(new Objects.Grenade());
-            _objects.Add(new Objects.Artifice());
-            _objects.Add(new Objects.Molotove());
-            _objects.Add(new Objects.IceGrenade());
+            Objects.Add(_amo);
+            Objects.Add(_grenade);
+            Objects.Add(_artifice);
+            Objects.Add(_molotove);
+            Objects.Add(_iceGrenade);
 
             //foreach (var el in _objects)
             //{
@@ -42,10 +50,10 @@ namespace MenuPokemon
         {
            List<string> objects = new ();
 
-            if (_objects != null)
+            if (Objects != null)
             {
                 int i = 0;
-                foreach(var obj in _objects)
+                foreach(var obj in Objects)
                 {
                     if (obj != null)
                     {
@@ -60,10 +68,10 @@ namespace MenuPokemon
 
         public void ShowInventory()
         {
-            if (_objects != null)
+            if (Objects != null)
             {
                 int posY = 2;
-                foreach (var obj in _objects)
+                foreach (var obj in Objects)
                 {
                     posY += 2;
                     if (obj != null)
