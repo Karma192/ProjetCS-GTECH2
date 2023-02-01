@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using Object = Objects.Object;
@@ -10,19 +11,32 @@ namespace MenuPokemon
     public class Inventory
     {
         [JsonInclude]
-        public Object[] _objects = new Object[3];
+        public List <Object> _objects = new();
         [JsonInclude]
-        public Objects.Ammunitions _amo = new();
+        Objects.Ammunitions _amo = new();
+        [JsonInclude]
+        Objects.Grenade _grenade = new();
+        [JsonInclude]
+        Objects.Artifice _artifice= new();
+        [JsonInclude]
+        Objects.Molotove _molotove= new();
+        [JsonInclude]
+        Objects.IceGrenade _iceGrenade= new();
+        
         
         public Inventory()
         {
-            _objects[0] = _amo;
-            
+            _objects.Add(_amo);
+            _objects.Add(_grenade);
+            _objects.Add(_artifice);
+            _objects.Add(_molotove);
+            _objects.Add(_iceGrenade);
         }
 
-        public string[] GetObjects()
+        public List<string> GetObjects()
         {
-            string[] objects = new string[4];
+           List<string> objects = new ();
+
             if (_objects != null)
             {
                 int i = 0;
@@ -30,7 +44,7 @@ namespace MenuPokemon
                 {
                     if (obj != null)
                     {
-                        objects[i] = obj.ShowObject();
+                        objects.Add(obj.ShowObject());
                         i++;
                     }
                 }

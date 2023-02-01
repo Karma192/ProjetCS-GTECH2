@@ -7,9 +7,10 @@ namespace pokehunter
     internal class MapManager
     {
         int _actualMap;
+        int _postFightMap;
         Map _map = new();
 
-        enum map
+        enum mapIndex
         {
             VILLAGE = 0,
             FOREST = 1,
@@ -22,23 +23,35 @@ namespace pokehunter
 
         public void DrawMap()
         {
-            switch(_actualMap)
+            switch (_actualMap)
             {
-                case (int)map.VILLAGE:
+                case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
                     break;
-                case (int)map.FOREST: 
+                case (int)mapIndex.FOREST:
+                    _map.InitTab("forestMap.txt");
                     break;
-                case (int)map.CAVE:
+                case (int)mapIndex.CAVE:
+                    _map.InitTab("caveMap.txt");
                     break;
-                case (int)map.COMBAT:
+                case (int)mapIndex.COMBAT:
                     _map.InitTab("combat.txt");
                     break;
             }
         }
 
+        public void QuitFight()
+        {
+            _actualMap = _postFightMap;
+
+        }
+
         public void ChangeMap(int map)
         {
+            if (map == (int)mapIndex.COMBAT)
+            {
+                _postFightMap = _actualMap;
+            }
             _actualMap = map;
         }
     }
@@ -57,77 +70,77 @@ namespace pokehunter
         public void InitTab(string fileName)
         {
             String line;
-                StreamReader sr = new StreamReader(fileName);
-                line = sr.ReadLine();
-                j = 0;
-                while (line != null)
+            StreamReader sr = new StreamReader(fileName);
+            line = sr.ReadLine();
+            j = 0;
+            while (line != null)
+            {
+
+                for (int i = 0; i < line.Length; i++)
                 {
+                    char letters = line[i];
 
-                    for (int i = 0; i < line.Length; i++)
+                    switch (letters)
                     {
-                        char letters = line[i];
-                        
-                        switch (letters)
-                        {
-                            case '#':
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                tab[i, j] = 1;
-                                break;
-                            case '▲':
-                                tab[i, j] = 2;
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                break;
-                            case '▼':
-                                tab[i, j] = 2;
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                break;
-                            case '.':
-                                Console.ForegroundColor = ConsoleColor.DarkGray;
-                                tab[i, j] = 0;
-                                Reset();
-                                break;
-                            case '┐':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '─':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '│':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '┘':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '└':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '┌':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            default:
-                                tab[i, j] = 2;
-                                Reset();
-                                break;
-                        }
-                        Console.Write(line[i]);
+                        case '#':
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            tab[i, j] = 1;
+                            break;
+                        case '▲':
+                            tab[i, j] = 2;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case '▼':
+                            tab[i, j] = 2;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case '.':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            tab[i, j] = 0;
+                            Reset();
+                            break;
+                        case '┐':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '─':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '│':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '┘':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '└':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '┌':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        default:
+                            tab[i, j] = 2;
+                            Reset();
+                            break;
                     }
-                    j++;
-
-                    //write the line to console window
-
-                    //Read the next line
-                    line = sr.ReadLine();
-                    Console.WriteLine();
+                    Console.Write(line[i]);
                 }
-                //close the file
-                sr.Close();
-                //Console.ReadLine();
+                j++;
+
+                //write the line to console window
+
+                //Read the next line
+                line = sr.ReadLine();
+                Console.WriteLine();
+            }
+            //close the file
+            sr.Close();
+            //Console.ReadLine();
         }
     }
 }

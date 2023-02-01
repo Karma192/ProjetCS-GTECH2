@@ -11,19 +11,22 @@ namespace MenuPokemon
         const int _heightFight = 8;
         const int _widthFight = 118;
 
-        public bool _activeMenu;
-        public bool _fightMenu = false;
+        bool _activeMenu;
+        bool _fightMenu;
+        bool _ennemyTurn;
         int _index;
         int _indexBis;
+        int _indexBisLimMin = 0;
+        int _indexBisLimMax;
+        int _indexActualFighter = 0;
         string _inventory = "INVENTORY";
         string _save = "SAVE";
         string _team = "TEAM";
-        int _indexActualFighter = 0;
 
         Inventory inventory = new();
         Team team = new();
         Capacity capa = new();
-        
+
 
         enum indexMenu
         {
@@ -40,10 +43,21 @@ namespace MenuPokemon
             ESCAPE = 3,
         }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager)
+        public bool GetActiveMenu { get => _activeMenu; }
+        public bool GetFightMenu { get => _fightMenu; }
+
+        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, 
+            MapManager mapManager, Fight fight)
         {
+            if (!_activeMenu && !_fightMenu)
+            {
+                _index= 0;
+                _indexBis = 0;
+            }
+
+            _fightMenu = fight.OnFight;
             ActiveMenu(input);
-            HandleKey(input, ennemi, save, player, mapManager);
+            HandleKey(input, ennemi, save, player, mapManager, fight);
             ShowMenu();
         }
 
@@ -56,7 +70,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -75,7 +89,7 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player, mapManager);
+                        EnterAction(ennemi, save, player, mapManager, fight);
                         break;
                     default:
                         break;
@@ -101,19 +115,19 @@ namespace MenuPokemon
                         }
                         break;
                     case ConsoleKey.LeftArrow:
-                        if (_indexBis != 0)
+                        if (_indexBis != _indexBisLimMin)
                         {
                             _indexBis--;
                         }
                         break;
                     case ConsoleKey.RightArrow:
-                        if (_indexBis != 3)
+                        if (_indexBis != _indexBisLimMax)
                         {
                             _indexBis++;
                         }
                         break;
                     case ConsoleKey.Enter:
-                        EnterAction(ennemi, save, player, mapManager);
+                        EnterAction(ennemi, save, player, mapManager, fight);
                         break;
                     default:
                         break;
@@ -121,7 +135,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Ennemi ennemi, Save save, Player player, MapManager mapManager)
+        private void EnterAction(Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -146,15 +160,76 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_indexBis == 0)
                         {
-                            capa.NoScope(inventory, team.Fighters[_indexActualFighter],ennemi);
-                            Console.WriteLine(ennemi.GetHealth());
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.NoScope(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Stielhandgranate(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if(_indexActualFighter == 2)
+                            {
+                                capa.Uppercut(team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
                         }
                         else if (_indexBis == 1)
                         {
-                            capa.CoupDeCrosse(team.Fighters[_indexActualFighter],ennemi);
-                            Console.WriteLine(ennemi.GetHealth());
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.CoupDeCrosse(team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Artifice(inventory, team.Fighters[_indexActualFighter]);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 2)
+                            {
+                                capa.CoupDeQueue(team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
                         }
-
+                        else if (_indexBis == 2)
+                        {
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.AmericaFckYeah(team.Fighters[_indexActualFighter]);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Molotove(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 2)
+                            {
+                                capa.MawashiGeri(team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                        }
+                        else if (_indexBis == 3)
+                        {
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.HeadShot(team.Fighters[_indexActualFighter],ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.IceGrenade(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 2)
+                            {
+                                capa.Roulade(team.Fighters[_indexActualFighter]);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                        }
                         break;
                     case (int)indexFight.OBJECTS:
                         Console.WriteLine(inventory.GetObjects()[_indexBis]);
@@ -165,8 +240,35 @@ namespace MenuPokemon
                     case (int)indexFight.ESCAPE:
                         Console.WriteLine("You quit the fight...");
                         _fightMenu = false;
+                        fight.QuitFight(mapManager, player);
                         break;
                 }
+
+                _ennemyTurn = true;
+
+                if (_ennemyTurn && _fightMenu)
+                {
+                    Console.SetCursorPosition(1, 28);
+                    Random rand = new();
+                    int random = rand.Next(1, 100);
+                    if (random > 50)
+                    {
+                        //ennemi.atk[rand.Next(0, 3)]
+                        Console.WriteLine(ennemi.Name + " hurt you !");
+                        team.Fighters[_indexActualFighter].Health -= 10;
+                    }
+                    else if (random == 1)
+                    {
+                        Console.WriteLine(ennemi.Name + " escape.");
+                        _fightMenu = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine(ennemi.Name + " miss his attack !");
+                    }
+                }
+
+                _ennemyTurn = false;
             }
         }
 
@@ -274,6 +376,7 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_index == (int)indexFight.ATTACK)
                         {
+                            _indexBisLimMax = 3;
                             ShowAttack();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -284,6 +387,7 @@ namespace MenuPokemon
                     case (int)indexFight.OBJECTS:
                         if (_index == (int)indexFight.OBJECTS)
                         {
+                            _indexBisLimMax = inventory._objects.Count - 1;
                             ShowObjects();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -294,6 +398,7 @@ namespace MenuPokemon
                     case (int)indexFight.SWITCH:
                         if (_index == (int)indexFight.SWITCH)
                         {
+                            _indexBisLimMax = team.Fighters.Length - 1;
                             ShowSwitch();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
@@ -352,7 +457,8 @@ namespace MenuPokemon
 
         private void ShowObjects()
         {
-            string[] obj = inventory.GetObjects();
+            
+            List<string> obj = inventory.GetObjects();
             int i = 23;
             foreach (string s in obj)
             {

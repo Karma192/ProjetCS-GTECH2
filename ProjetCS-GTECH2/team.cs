@@ -26,12 +26,13 @@ namespace MenuPokemon
             Fighters[2].Attack = atkKarma;
         }
 
-        public Fighters[] Fighters { get => _fighters;  }
+        public Fighters[] Fighters { get => _fighters; }
 
         public Fighters[] GetTeam() 
         {
             return Fighters;
         }
+
 
         public void ShowTeam()
         {

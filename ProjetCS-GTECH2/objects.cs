@@ -31,7 +31,6 @@ namespace Objects
             }
         }
     }
-
     public class Ammunitions : Object
     {
         public Ammunitions()
@@ -39,6 +38,43 @@ namespace Objects
             _name = "Ammunitions";
             _quantity = 40;
             _maxQuantity = 40;
+        }
+    }
+
+    public class Grenade : Object
+    {
+        public Grenade()
+        {
+            _name = "Grenade";
+            _quantity = 10;
+            _maxQuantity = 10;
+        }
+    }
+    public class Artifice : Object
+    {
+        public Artifice()
+        {
+            _name = "Artifice";
+            _quantity = 5;
+            _maxQuantity = 5;
+        }
+    }
+    public class Molotove : Object
+    {
+        public Molotove()
+        {
+            _name = "Cocktail Molotove";
+            _quantity = 5;
+            _maxQuantity = 5;
+        }
+    }
+    public class IceGrenade : Object
+    {
+        public IceGrenade()
+        {
+            _name = "Ice Grenade";
+            _quantity = 5;
+            _maxQuantity = 5;
         }
     }
 }
