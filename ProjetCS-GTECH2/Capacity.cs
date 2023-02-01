@@ -9,7 +9,7 @@ using Object = Objects.Object;
 
 namespace MenuPokemon
 {
-    public class Capacity
+    internal class Capacity
     {
 
         public void NoScope(Inventory inventory, Fighters fighters, Ennemi ennemi)

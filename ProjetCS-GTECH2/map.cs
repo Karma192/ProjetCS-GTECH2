@@ -96,21 +96,21 @@ namespace pokehunter
             }
         }
 
-        public void DrawMap(Player player)
+        public void DrawMap(Player player, SpawnerEnnemy sp)
         {
             switch (_actualMap)
             {
                 case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
-                    Changers(player);
+                    Changers(player, sp);
                     break;
                 case (int)mapIndex.FOREST:
                     _map.InitTab("forestMap.txt");
-                    Changers(player);
+                    Changers(player, sp);
                     break;
                 case (int)mapIndex.CAVE:
                     _map.InitTab("caveMap.txt");
-                    Changers(player);
+                    Changers(player, sp);
                     break;
                 case (int)mapIndex.COMBAT:
                     _map.InitTab("combat.txt");
@@ -124,16 +124,19 @@ namespace pokehunter
 
         }
 
-        public void ChangeMap(int map)
+        public void ChangeMap(int map, SpawnerEnnemy sp)
         {
             if (map == (int)mapIndex.COMBAT)
             {
                 _postFightMap = _actualMap;
+            } else
+            {
+                sp.SetSpawner();
             }
             _actualMap = map;
         }
 
-        void Changers(Player player)
+        void Changers(Player player, SpawnerEnnemy sp)
         {
             int i = 1;
             foreach (var changer in _changers)
@@ -158,7 +161,7 @@ namespace pokehunter
                 
                 if (changer.CheckCollide(player))
                 {
-                    ChangeMap(_actualMap - i);
+                    ChangeMap(_actualMap - i, sp);
                     player.SetPlayerPos(player.GetXPos(), (14 + (11 * i)));
                 }
                 i = -i;
