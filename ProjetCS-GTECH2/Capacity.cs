@@ -63,7 +63,7 @@ namespace MenuPokemon
                 Console.WriteLine("No more grenade.");
             }
         }
-        public void Artifice(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public void Artifice(Inventory inventory, Fighters fighters)
         {
 
             if (inventory._objects[2]._quantity != 0)
@@ -123,7 +123,7 @@ namespace MenuPokemon
             damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.Getdamage() /4 + fighters.GetBuffDmg();
             ennemi.SetHealth(damageDeal);
         }
-        public void Roulade(Fighters fighters, Ennemi ennemi)
+        public void Roulade(Fighters fighters)
         {
             int buff = 0;
             buff = 5;

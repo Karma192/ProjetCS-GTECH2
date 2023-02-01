@@ -6,7 +6,7 @@ namespace pokehunter
 {
     internal class MapManager
     {
-        int _actualMap = 2;
+        int _actualMap ;
         int _postFightMap;
         Map _map = new();
 
