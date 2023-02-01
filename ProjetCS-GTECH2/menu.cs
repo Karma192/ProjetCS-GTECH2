@@ -185,7 +185,7 @@ namespace MenuPokemon
                             }
                             else if (_indexActualFighter == 1)
                             {
-                                capa.Artifice(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                capa.Artifice(inventory, team.Fighters[_indexActualFighter]);
                                 Console.WriteLine(ennemi.GetHealth());
                             }
                             else if (_indexActualFighter == 2)
@@ -216,7 +216,7 @@ namespace MenuPokemon
                         {
                             if (_indexActualFighter == 0)
                             {
-                                capa.HeadShot(team.Fighters[_indexActualFighter]);
+                                capa.HeadShot(team.Fighters[_indexActualFighter],ennemi);
                                 Console.WriteLine(ennemi.GetHealth());
                             }
                             else if (_indexActualFighter == 1)
@@ -226,7 +226,7 @@ namespace MenuPokemon
                             }
                             else if (_indexActualFighter == 2)
                             {
-                                capa.Roulade(team.Fighters[_indexActualFighter], ennemi);
+                                capa.Roulade(team.Fighters[_indexActualFighter]);
                                 Console.WriteLine(ennemi.GetHealth());
                             }
                         }
