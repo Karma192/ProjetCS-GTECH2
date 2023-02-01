@@ -1,6 +1,7 @@
 ﻿using Fighter;
 using pokehunter;
 using GameSave;
+using Objects;
 
 namespace MenuPokemon
 {
@@ -23,7 +24,18 @@ namespace MenuPokemon
         string _save = "SAVE";
         string _team = "TEAM";
 
-        Inventory inventory = new();
+        Inventory inventory = new()
+        {
+            Objects= new List<Objects.Object>()
+            {
+                new Ammunitions(),
+                new Grenade(),
+                new Artifice(),
+                new Molotove(),
+                new IceGrenade(),
+            }
+        };
+
         Team team = new();
         Capacity capa = new();
 

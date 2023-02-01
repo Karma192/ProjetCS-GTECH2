@@ -32,7 +32,7 @@ namespace Fighter
             set => _attack = value;
         }
 
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         public Fighters(string name, int health, string[] attack)
         {
             _name= name;

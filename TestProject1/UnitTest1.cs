@@ -1,3 +1,5 @@
+using MenuPokemon;
+
 namespace TestProject1
 {
     public class Tests
@@ -6,6 +8,8 @@ namespace TestProject1
         public void Test1()
         {
             Assert.Pass();
+
+
         }
     }
 }
