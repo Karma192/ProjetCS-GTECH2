@@ -26,7 +26,7 @@ namespace MenuPokemon
         Inventory inventory = new();
         Team team = new();
         Capacity capa = new();
-        
+
 
         enum indexMenu
         {
@@ -160,12 +160,46 @@ namespace MenuPokemon
                     case (int)indexFight.ATTACK:
                         if (_indexBis == 0)
                         {
-                            capa.NoScope(inventory, team.Fighters[_indexActualFighter],ennemi);
-                            Console.WriteLine(ennemi.GetHealth());
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.NoScope(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Stielhandgranate(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
                         }
                         else if (_indexBis == 1)
                         {
-                            capa.CoupDeCrosse(team.Fighters[_indexActualFighter],ennemi);
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.CoupDeCrosse(team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Artifice(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                        }
+                        else if (_indexBis == 2)
+                        {
+                            if (_indexActualFighter == 0)
+                            {
+                                capa.AmericaFckYeah(team._fighters[_indexActualFighter]);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                            else if (_indexActualFighter == 1)
+                            {
+                                capa.Molotove(inventory, team._fighters[_indexActualFighter], ennemi);
+                                Console.WriteLine(ennemi.GetHealth());
+                            }
+                        }
+                        else if (_indexBis == 3)
+                        {
+                            capa.HeadShot(team._fighters[_indexActualFighter], ennemi);
                             Console.WriteLine(ennemi.GetHealth());
                         }
                         break;
@@ -186,15 +220,15 @@ namespace MenuPokemon
 
                 if (_ennemyTurn && _fightMenu)
                 {
-                    Console.SetCursorPosition(1, 30);
+                    Console.SetCursorPosition(1, 28);
                     Random rand = new();
                     int random = rand.Next(1, 100);
-                    if ( random > 50 )
+                    if (random > 50)
                     {
                         //ennemi.atk[rand.Next(0, 3)]
                         Console.WriteLine(ennemi.Name + " hurt you !");
-                        team.Fighters[_indexActualFighter].Health -= 10;
-                    } 
+                        team._fighters[_indexActualFighter].Health -= 10;
+                    }
                     else if (random == 1)
                     {
                         Console.WriteLine(ennemi.Name + " escape.");
@@ -395,7 +429,8 @@ namespace MenuPokemon
 
         private void ShowObjects()
         {
-            string[] obj = inventory.GetObjects();
+            
+            List<string> obj = inventory.GetObjects();
             int i = 23;
             foreach (string s in obj)
             {

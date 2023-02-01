@@ -12,6 +12,7 @@ namespace Fighter
         string[] _attack = new string[4];
         int _defense;
         int _damage;
+        int _buffDmg;
 
         public string Name
         {
@@ -46,5 +47,18 @@ namespace Fighter
         { 
             return _damage; 
         }
+        public int GetBuffDmg()
+        {
+            return _buffDmg;
+        }
+        public void Setdamage(int damage)
+        {
+            _damage = damage;
+        }
+        public void SetBuffDmg(int buffDmg)
+        {
+            _buffDmg = buffDmg;
+        }
+
     }
 }
