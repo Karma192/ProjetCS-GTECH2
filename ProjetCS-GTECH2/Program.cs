@@ -98,7 +98,6 @@ namespace Program
                     }
                     else
                     {
-
                         return true;
                     }
                 default:

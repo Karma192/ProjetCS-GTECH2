@@ -138,11 +138,27 @@ namespace pokehunter
             int i = 1;
             foreach (var changer in _changers)
             {
-                changer.DrawMapChanger();
-
+                if (_actualMap == (int)mapIndex.VILLAGE)
+                {
+                    if (i == -1)
+                    {
+                        changer.DrawMapChanger();
+                    }
+                } 
+                else if (_actualMap == (int)mapIndex.CAVE)
+                {
+                    if (i == 1)
+                    {
+                        changer.DrawMapChanger();
+                    }
+                } else
+                {
+                    changer.DrawMapChanger();
+                }
+                
                 if (changer.CheckCollide(player))
                 {
-                    ChangeMap(_actualMap + i);
+                    ChangeMap(_actualMap - i);
                     player.SetPlayerPos(player.GetXPos(), (14 + (11 * i)));
                 }
                 i = -i;
@@ -177,12 +193,12 @@ namespace pokehunter
                     {
                         case '<':
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            tab[i, j] = 0;
+                            tab[i, j] = 1;
                             Reset();
                             break;
                         case '>':
                             Console.ForegroundColor = ConsoleColor.DarkGray;
-                            tab[i, j] = 0;
+                            tab[i, j] = 1;
                             Reset();
                             break;
                         case '#':
@@ -190,11 +206,11 @@ namespace pokehunter
                             tab[i, j] = 1;
                             break;
                         case '▲':
-                            tab[i, j] = 2;
+                            tab[i, j] = 0;
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             break;
                         case '▼':
-                            tab[i, j] = 2;
+                            tab[i, j] = 0;
                             Console.ForegroundColor = ConsoleColor.DarkRed;
                             break;
                         case '.':
