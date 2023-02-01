@@ -54,15 +54,6 @@ namespace Program
                     player._player = " ";
                 }
 
-                if (input.Key == ConsoleKey.L)
-                {
-                    save.DoSave(player);
-                }
-
-                if (input.Key == ConsoleKey.A)
-                {
-                    save.ReadSave(player);
-                }
             }
         }
 

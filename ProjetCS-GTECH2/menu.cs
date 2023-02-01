@@ -146,7 +146,7 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
-                        save.DoSave(player);
+                        save.DoSave(player, team, mapManager, inventory);
                         break;
                     default:
                         break;

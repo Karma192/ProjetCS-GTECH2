@@ -18,7 +18,7 @@ namespace Objects
             return show;
         }
 
-        public bool Use(int quantity)
+        public virtual bool Use(int quantity)
         {
             if (_quantity >= quantity)
             {
@@ -31,7 +31,6 @@ namespace Objects
             }
         }
     }
-
     public class Ammunitions : Object
     {
         public Ammunitions()
@@ -40,7 +39,14 @@ namespace Objects
             _quantity = 40;
             _maxQuantity = 40;
         }
+
+        public override bool Use(int quantity)
+        {
+
+            return base.Use(quantity);
+        }
     }
+
     public class Grenade : Object
     {
         public Grenade()

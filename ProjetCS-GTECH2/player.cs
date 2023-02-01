@@ -1,12 +1,15 @@
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace pokehunter
 {
     public class Player
     {
-        int _yPos;
-        int _xPos;
+        [JsonInclude]
+        public int _yPos;
+        [JsonInclude]
+        public int _xPos;
 
         public string _player = "P";
 
@@ -15,6 +18,7 @@ namespace pokehunter
            
         }
 
+      
         public void DrawPlayer(int x, int y)
         {
             if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
@@ -26,6 +30,8 @@ namespace pokehunter
             Console.Write(_player);
             
         }
+
+       
 
         public int GetXPos() 
         {
