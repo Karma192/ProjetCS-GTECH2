@@ -6,7 +6,7 @@ namespace pokehunter
 {
     internal class MapManager
     {
-        int _actualMap ;
+        int _actualMap;
         int _postFightMap;
         Map _map = new();
 
@@ -23,7 +23,7 @@ namespace pokehunter
 
         public void DrawMap()
         {
-            switch(_actualMap)
+            switch (_actualMap)
             {
                 case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
@@ -70,77 +70,77 @@ namespace pokehunter
         public void InitTab(string fileName)
         {
             String line;
-                StreamReader sr = new StreamReader(fileName);
-                line = sr.ReadLine();
-                j = 0;
-                while (line != null)
+            StreamReader sr = new StreamReader(fileName);
+            line = sr.ReadLine();
+            j = 0;
+            while (line != null)
+            {
+
+                for (int i = 0; i < line.Length; i++)
                 {
+                    char letters = line[i];
 
-                    for (int i = 0; i < line.Length; i++)
+                    switch (letters)
                     {
-                        char letters = line[i];
-                        
-                        switch (letters)
-                        {
-                            case '#':
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                tab[i, j] = 1;
-                                break;
-                            case '▲':
-                                tab[i, j] = 2;
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                break;
-                            case '▼':
-                                tab[i, j] = 2;
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                break;
-                            case '.':
-                                Console.ForegroundColor = ConsoleColor.DarkGray;
-                                tab[i, j] = 0;
-                                Reset();
-                                break;
-                            case '┐':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '─':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '│':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '┘':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '└':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            case '┌':
-                                tab[i, j] = 1;
-                                Reset();
-                                break;
-                            default:
-                                tab[i, j] = 2;
-                                Reset();
-                                break;
-                        }
-                        Console.Write(line[i]);
+                        case '#':
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            tab[i, j] = 1;
+                            break;
+                        case '▲':
+                            tab[i, j] = 2;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case '▼':
+                            tab[i, j] = 2;
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            break;
+                        case '.':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            tab[i, j] = 0;
+                            Reset();
+                            break;
+                        case '┐':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '─':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '│':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '┘':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '└':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        case '┌':
+                            tab[i, j] = 1;
+                            Reset();
+                            break;
+                        default:
+                            tab[i, j] = 2;
+                            Reset();
+                            break;
                     }
-                    j++;
-
-                    //write the line to console window
-
-                    //Read the next line
-                    line = sr.ReadLine();
-                    Console.WriteLine();
+                    Console.Write(line[i]);
                 }
-                //close the file
-                sr.Close();
-                //Console.ReadLine();
+                j++;
+
+                //write the line to console window
+
+                //Read the next line
+                line = sr.ReadLine();
+                Console.WriteLine();
+            }
+            //close the file
+            sr.Close();
+            //Console.ReadLine();
         }
     }
 }
