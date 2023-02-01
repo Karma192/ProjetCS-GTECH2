@@ -146,7 +146,7 @@ namespace MenuPokemon
                     case (int)indexMenu.TEAM:
                         break;
                     case (int)indexMenu.SAVE:
-                        save.DoSave(player);
+                        save.DoSave(player, team, mapManager, inventory);
                         break;
                     default:
                         break;
@@ -387,7 +387,7 @@ namespace MenuPokemon
                     case (int)indexFight.OBJECTS:
                         if (_index == (int)indexFight.OBJECTS)
                         {
-                            _indexBisLimMax = inventory._objects.Count - 1;
+                            _indexBisLimMax = inventory.Objects.Count - 1;
                             ShowObjects();
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
