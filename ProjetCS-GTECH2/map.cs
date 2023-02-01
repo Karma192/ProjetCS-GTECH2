@@ -4,6 +4,36 @@ using System.Dynamic;
 
 namespace pokehunter
 {
+    internal class MapChanger
+    {
+        int _posX;
+        int _posY;
+        string _face = string.Empty;
+
+        void SetFace()
+        {
+            if (_posY == 1)
+            {
+                _face = "▲";
+            }
+            else
+            {
+                _face = "▼";
+            }
+        }
+
+        bool CheckCollide(Player player)
+        {
+            if (player.GetXPos() == _posX && player.GetYPos() == _posY)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
     internal class MapManager
     {
         int _actualMap;
