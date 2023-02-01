@@ -8,25 +8,53 @@ namespace pokehunter
     {
         int _posX;
         int _posY;
-        string _face = string.Empty;
+        int _width = 19;
+        char _face;
+        string _appearence = string.Empty;
+
+        public void SetMapChanger(int x, int y)
+        {
+            _posX = x;
+            _posY = y;
+            SetFace();
+        }
 
         void SetFace()
         {
             if (_posY == 1)
             {
-                _face = "▲";
+                _face = '▲';
             }
             else
             {
-                _face = "▼";
+                _face = '▼';
             }
+
+            _appearence += " " + _face;
+
+            for (int i = 0; i < _width - 4; i++)
+            {
+                _appearence += " ";
+            }
+
+            _appearence += _face + " ";
         }
 
-        bool CheckCollide(Player player)
+        public void DrawMapChanger()
         {
-            if (player.GetXPos() == _posX && player.GetYPos() == _posY)
+            Console.SetCursorPosition(_posX, _posY);
+            Console.Write(_appearence);
+        }
+
+        public bool CheckCollide(Player player)
+        {
+            if (player.GetXPos() >= _posX && player.GetXPos() <= _posX + _width)
             {
-                return true;
+                if (player.GetYPos() == _posY)
+                {
+                    return true;
+                }
+                return false;
             }
             else
             {
@@ -34,10 +62,14 @@ namespace pokehunter
             }
         }
     }
+
     internal class MapManager
     {
         int _actualMap;
         int _postFightMap;
+        MapChanger[] _changers = new MapChanger[2];
+        MapChanger _changer1 = new();
+        MapChanger _changer2 = new();
         Map _map = new();
 
         enum mapIndex
@@ -48,21 +80,37 @@ namespace pokehunter
             COMBAT = 3,
         }
 
-        public int actualMap() { return _actualMap; }
+        public int ActualMap() { return _actualMap; }
         public Map GetMap() { return _map; }
 
-        public void DrawMap()
+        public MapManager()
+        {
+            _changers.SetValue(_changer1, 0);
+            _changers.SetValue(_changer2, 1);
+
+            int i = 0;
+            foreach (var changer in _changers)
+            {
+                changer.SetMapChanger(28, (1 + (i * 25)));
+                i++;
+            }
+        }
+
+        public void DrawMap(Player player)
         {
             switch (_actualMap)
             {
                 case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
+                    Changers(player);
                     break;
                 case (int)mapIndex.FOREST:
                     _map.InitTab("forestMap.txt");
+                    Changers(player);
                     break;
                 case (int)mapIndex.CAVE:
                     _map.InitTab("caveMap.txt");
+                    Changers(player);
                     break;
                 case (int)mapIndex.COMBAT:
                     _map.InitTab("combat.txt");
@@ -83,6 +131,22 @@ namespace pokehunter
                 _postFightMap = _actualMap;
             }
             _actualMap = map;
+        }
+
+        void Changers(Player player)
+        {
+            int i = 1;
+            foreach (var changer in _changers)
+            {
+                changer.DrawMapChanger();
+
+                if (changer.CheckCollide(player))
+                {
+                    ChangeMap(_actualMap + i);
+                    player.SetPlayerPos(player.GetXPos(), (14 + (11 * i)));
+                }
+                i = -i;
+            }
         }
     }
 
@@ -105,13 +169,22 @@ namespace pokehunter
             j = 0;
             while (line != null)
             {
-
                 for (int i = 0; i < line.Length; i++)
                 {
                     char letters = line[i];
 
                     switch (letters)
                     {
+                        case '<':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            tab[i, j] = 0;
+                            Reset();
+                            break;
+                        case '>':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            tab[i, j] = 0;
+                            Reset();
+                            break;
                         case '#':
                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                             tab[i, j] = 1;

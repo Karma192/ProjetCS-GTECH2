@@ -32,7 +32,7 @@ namespace Program
                 input = Console.ReadKey();
                 Console.SetCursorPosition(0, 0);
                 fight.DetectFight(player, ennemi, mapManager);
-                mapManager.DrawMap();
+                mapManager.DrawMap(player);
                 menu.MenuUpdate(input, ennemi, save, player, mapManager, fight);
                 ennemi.DrawEnnemi();
                 move = player.Getinput(input);
