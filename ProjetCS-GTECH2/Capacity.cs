@@ -134,7 +134,7 @@ namespace MenuPokemon
         {
             int finalheath = 0;
             int damageDeal = 0;
-            damageDeal = fighters.Getdamage() + fighters.Getdamage() / 4 + fighters.GetBuffDmg()
+            damageDeal = fighters.Getdamage() + fighters.Getdamage() / 4 + fighters.GetBuffDmg();
             finalheath = ennemi.GetHealth() - damageDeal;
             ennemi.SetHealth(finalheath);
             return damageDeal;
