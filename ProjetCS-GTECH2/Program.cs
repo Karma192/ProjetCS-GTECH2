@@ -19,23 +19,23 @@ namespace Program
             MapManager mapManager = new();
             Menu menu = new();
             Player player = new();
-            Ennemi ennemi = new("Pikachu",60,20, 40, 5);
+            SpawnerEnnemy ennemy = new();
             Fight fight = new();
             sceneMenu menuScene = new();
             char move;
             bool canMove = false;
 
-            menuScene.SceneUpdate(input, save, ref player, mapManager);
-            
+            menuScene.SceneUpdate(input, save, ref player, mapManager, ennemy);
+            ennemy.SetSpawner();
 
             while (Open(input))
             {
-                input = Console.ReadKey();
+                input = Console.ReadKey(true);
+                Ennemi e = ennemy.GetEnnemiCollided(player);
                 Console.SetCursorPosition(0, 0);
-                fight.DetectFight(player, ennemi, mapManager);
-                mapManager.DrawMap();
-                menu.MenuUpdate(input, ennemi, save, player, mapManager, fight);
-                ennemi.DrawEnnemi();
+                fight.DetectFight(player, ennemy.GetEnnemis, mapManager, ennemy);
+                mapManager.DrawMap(player, ennemy);
+                menu.MenuUpdate(input, ref e, save, player, mapManager, fight);
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
 
@@ -49,12 +49,12 @@ namespace Program
                 if (!fight.OnFight)
                 {
                     player._player = "P";
+                    ennemy.Spawn();
                 }
                 else
                 {
                     player._player = " ";
                 }
-
             }
         }
 
@@ -99,7 +99,6 @@ namespace Program
                     }
                     else
                     {
-
                         return true;
                     }
                 default:

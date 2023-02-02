@@ -54,7 +54,7 @@ namespace Fighter
         }
         public int Getdamage() 
         { 
-            return _damage; 
+            return _damage;
         }
         public int GetBuffDmg()
         {

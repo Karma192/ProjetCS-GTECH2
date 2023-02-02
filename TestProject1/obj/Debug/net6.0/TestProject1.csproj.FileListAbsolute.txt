@@ -97,9 +97,3 @@ D:\Projet c#\ProjetCS-GTECH2\TestProject1\obj\Debug\net6.0\refint\TestProject1.d
 D:\Projet c#\ProjetCS-GTECH2\TestProject1\obj\Debug\net6.0\TestProject1.pdb
 D:\Projet c#\ProjetCS-GTECH2\TestProject1\obj\Debug\net6.0\TestProject1.genruntimeconfig.cache
 D:\Projet c#\ProjetCS-GTECH2\TestProject1\obj\Debug\net6.0\ref\TestProject1.dll
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\CoverletSourceRootsMapping
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\ProjetCS-GTECH2.deps.json
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\ProjetCS-GTECH2.runtimeconfig.json
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\ProjetCS-GTECH2.exe
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\ProjetCS-GTECH2.dll
-D:\Projet c#\ProjetCS-GTECH2\TestProject1\bin\Debug\net6.0\ProjetCS-GTECH2.pdb
