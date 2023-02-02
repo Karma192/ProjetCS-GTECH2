@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AMm6wH/UUdWTRu9rpcXMYUMFIyzTyc9GA4t4t/HBrH23eVARCLHLCMLEa3m/30H11ILepUCWE6tsRKNIkecJqw==",
+  "dgSpecHash": "dfOYcInuKhSaWJHXH+KvCufAyby0mLF+hUc6fSskiHk4RS1sp6W54XBG4blXd/fO3LkoEbah4QzwWEebeileXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\agrandpaul\\source\\repos\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\agrandpaul\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

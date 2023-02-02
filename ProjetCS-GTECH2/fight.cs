@@ -26,14 +26,17 @@ namespace pokehunter
             mapManager.QuitFight();
         }
 
-        public void DetectFight(Player player, Ennemi ennemi, MapManager mapManager)
+        public void DetectFight(Player player, List<Ennemi> ennemi, MapManager mapManager, SpawnerEnnemy sp)
         {
             if (!_onFight)
             {
-                if (player.GetXPos() == ennemi.GetXPos() && player.GetYPos() == ennemi.GetYPos())
+                foreach (var e in ennemi)
                 {
-                    mapManager.ChangeMap(3);
-                    _onFight = true;
+                    if (player.GetXPos() == e.GetXPos() && player.GetYPos() == e.GetYPos())
+                    {
+                        mapManager.ChangeMap(3, sp);
+                        _onFight = true;
+                    }
                 }
             }
         }
