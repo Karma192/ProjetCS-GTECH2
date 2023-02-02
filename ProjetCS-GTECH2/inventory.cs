@@ -20,11 +20,11 @@ namespace MenuPokemon
         public Inventory()
         {
             objects = new List<Object>();
-            // objects.Add(new Ammunitions());
-            // objects.Add(new Grenade());
-            // objects.Add(new Artifice());
-            // objects.Add(new Molotove());
-            // objects.Add(new IceGrenade());
+            objects.Add(new Ammunitions());
+            objects.Add(new Grenade());
+            objects.Add(new Artifice());
+            objects.Add(new Molotove());
+            objects.Add(new IceGrenade());
 
             //foreach (var el in _objects)
             //{

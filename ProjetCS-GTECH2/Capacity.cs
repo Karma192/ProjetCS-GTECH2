@@ -10,7 +10,7 @@ using System.Net.Http.Headers;
 
 namespace MenuPokemon
 {
-    internal class Capacity
+    public class Capacity
     {
 
         public int NoScope(Capacity cap, Inventory inventory, Fighters fighters, Ennemi ennemi)
@@ -46,7 +46,7 @@ namespace MenuPokemon
             int buff = 0;
             buff = 2;
             fighters.SetBuffDmg(buff);
-            return fighters.Getdamage();
+            return fighters.Getdamage() + fighters.GetBuffDmg();
         }
         public int HeadShot(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
@@ -82,7 +82,7 @@ namespace MenuPokemon
                 fighters.SetBuffDmg(buff);
             }
 
-                return fighters.Getdamage();
+                return fighters.Getdamage() + fighters.GetBuffDmg();
         }
         public int Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
@@ -144,7 +144,7 @@ namespace MenuPokemon
             int buff = 0;
             buff = 5;
             fighters.SetBuffDmg(buff);
-            return fighters.Getdamage();
+            return fighters.Getdamage() + fighters.GetBuffDmg();
         }
     }
 }

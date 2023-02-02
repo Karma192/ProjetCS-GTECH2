@@ -44,7 +44,7 @@ namespace pokehunter
         }
     }
 
-    internal class Ennemi
+    public class Ennemi
     {
         int _xPos;
         int _yPos;

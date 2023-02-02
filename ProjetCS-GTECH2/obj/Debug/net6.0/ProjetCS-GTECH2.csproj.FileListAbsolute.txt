@@ -79,3 +79,5 @@ C:\Users\agrandpaul\source\repos\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.
 C:\Users\agrandpaul\source\repos\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
+D:\Projet c#\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Projet c#\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
