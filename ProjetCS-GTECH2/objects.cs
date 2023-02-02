@@ -40,11 +40,11 @@ namespace Objects
             _maxQuantity = 40;
         }
 
-        public override bool Use(int quantity)
+/*        public override bool Use(int quantity)
         {
 
             return base.Use(quantity);
-        }
+        }*/
     }
 
     public class Grenade : Object

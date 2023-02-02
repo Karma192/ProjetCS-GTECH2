@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projet c#\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj": {}
+    "C:\\dev\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj": {}
   },
   "projects": {
-    "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj": {
+    "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
+        "projectUniqueName": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
         "projectName": "ProjetCS-GTECH2",
-        "projectPath": "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
-        "packagesPath": "C:\\Users\\achassaing\\.nuget\\packages\\",
-        "outputPath": "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\obj\\",
+        "projectPath": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
+        "packagesPath": "C:\\Users\\cyria\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\achassaing\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cyria\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -63,20 +69,20 @@
         }
       }
     },
-    "D:\\Projet c#\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj": {
+    "C:\\dev\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projet c#\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj",
+        "projectUniqueName": "C:\\dev\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj",
         "projectName": "TestProject1",
-        "projectPath": "D:\\Projet c#\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj",
-        "packagesPath": "C:\\Users\\achassaing\\.nuget\\packages\\",
-        "outputPath": "D:\\Projet c#\\ProjetCS-GTECH2\\TestProject1\\obj\\",
+        "projectPath": "C:\\dev\\ProjetCS-GTECH2\\TestProject1\\TestProject1.csproj",
+        "packagesPath": "C:\\Users\\cyria\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\ProjetCS-GTECH2\\TestProject1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\achassaing\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cyria\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -91,8 +97,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj": {
-                "projectPath": "D:\\Projet c#\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj"
+              "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj": {
+                "projectPath": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj"
               }
             }
           }
