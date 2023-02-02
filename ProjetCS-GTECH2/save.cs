@@ -72,5 +72,5 @@ namespace GameSave
             player = JsonSerializer.Deserialize<Player>(jsonString3)!;
 
         }
-    } 
+    }
 }
