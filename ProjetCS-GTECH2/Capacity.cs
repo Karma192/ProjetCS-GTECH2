@@ -18,17 +18,13 @@ namespace MenuPokemon
             int damageFighter = 0;
             int damageDeal = 0;
 
-            if (inventory.Objects[0]._quantity != 0)
+            if (inventory.Objects[0].Use(1) != false)
             {
                 healthEnemi = ennemi.GetHealth();
                 damageFighter = fighters.Getdamage();
                 damageDeal = healthEnemi - (damageFighter + damageFighter / 2);
                 ennemi.SetHealth(damageDeal);
 
-            }
-            else
-            {
-                Console.WriteLine("No more ammo.");
             }
         }
 
@@ -44,66 +40,56 @@ namespace MenuPokemon
             buff = 2;
             fighters.SetBuffDmg(buff);
         }
-        public void HeadShot(Fighters fighters, Ennemi ennemi)
+        public void HeadShot(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            damageDeal = ennemi.GetHealth() - (fighters.Getdamage() + fighters.GetBuffDmg()) * 2;
-            ennemi.SetHealth(damageDeal);
+            if (inventory.Objects[0].Use(1) != false)
+            {
+                damageDeal = ennemi.GetHealth() - (fighters.Getdamage() + fighters.GetBuffDmg()) * 2;
+                ennemi.SetHealth(damageDeal);
+            }
         }
         public void Stielhandgranate(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory.Objects[1]._quantity != 0)
+            if (inventory.Objects[1].Use(1) != false)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
                 ennemi.SetHealth(damageDeal);
             }
-            else
-            {
-                Console.WriteLine("No more grenade.");
-            }
+
         }
         public void Artifice(Inventory inventory, Fighters fighters)
         {
 
-            if (inventory.Objects[2]._quantity != 0)
+            if (inventory.Objects[2].Use(1) != false)
             {
                 int buff = 0;
                 buff = 3;
                 fighters.SetBuffDmg(buff);
             }
-            else
-            {
-                Console.WriteLine("No more grenade.");
-            }
         }
         public void Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory.Objects[3]._quantity != 0)
+            if (inventory.Objects[3].Use(1) != false)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.GetBuffDmg();
                 ennemi.SetBurn(true);
                 ennemi.SetHealth(damageDeal);
             }
-            else
-            {
-                Console.WriteLine("No more Molotov.");
-            }
+
         }
         public void IceGrenade(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory.Objects[4]._quantity != 0)
+            if (inventory.Objects[4].Use(1) != false)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage()/2 + fighters.GetBuffDmg();
                 ennemi.SetDeBuff(2);
                 ennemi.SetHealth(damageDeal);
             }
-            else
-            {
-                Console.WriteLine("No more Ice grenade.");
-            }
+
         }
         public void Uppercut(Fighters fighters, Ennemi ennemi)
         {
