@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -7,28 +8,22 @@ namespace pokehunter
     public class Player
     {
         [JsonInclude]
-        public int _yPos;
+        public int _yPos = 10;
         [JsonInclude]
-        public int _xPos;
+        public int _xPos = 50;
 
         public string _player = "P";
 
         public Player()
         {
-           
+            
         }
 
       
-        public void DrawPlayer(int x, int y)
+        public void DrawPlayer()
         {
-            if (_yPos == 0  || _yPos == 1 && _xPos == 0 || _xPos == 1) 
-            {
-                _yPos = y;
-                 _xPos =  x;
-            }
             Console.SetCursorPosition(_xPos, _yPos);
             Console.Write(_player);
-            
         }
 
        
@@ -88,7 +83,6 @@ namespace pokehunter
                     break;
             }
         }
-
 
     }
 

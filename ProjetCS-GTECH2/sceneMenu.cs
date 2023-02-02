@@ -22,7 +22,7 @@ namespace ProjetCS_GTECH2
             SAVE = 1,
         }
 
-        public void SceneUpdate(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager, SpawnerEnnemy sp)
+        public void SceneUpdate(ConsoleKeyInfo input, Save save, ref Player player, MapManager mapManager, SpawnerEnnemy sp)
         {
             SetTitle();
             AnimTitle();
@@ -30,7 +30,7 @@ namespace ProjetCS_GTECH2
             {
                 ShowTitle();
                 input = Console.ReadKey();
-                MenuStart(input, save, player, mapManager, sp);
+                MenuStart(input, save, ref player, mapManager, sp);
                 SaveMenu(input);
             }
         }
@@ -72,9 +72,9 @@ namespace ProjetCS_GTECH2
             }
         }
 
-        private void MenuStart(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager, SpawnerEnnemy sp)
+        private void MenuStart(ConsoleKeyInfo input, Save save, ref Player player, MapManager mapManager, SpawnerEnnemy sp)
         {
-            HandleKey(input, save, player, mapManager, sp);
+            HandleKey(input, save, ref player, mapManager, sp);
             switch (_index)
             {
                 case (int)indexMenu.START:
@@ -105,7 +105,7 @@ namespace ProjetCS_GTECH2
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Save save, Player player, MapManager mapManager, SpawnerEnnemy sp)
+        private void HandleKey(ConsoleKeyInfo input, Save save, ref Player player, MapManager mapManager, SpawnerEnnemy sp)
         {
             switch (input.Key)
             {
@@ -129,7 +129,7 @@ namespace ProjetCS_GTECH2
                     if (_index == 1)
                     {
                         mapManager.ChangeMap(0, sp);        
-                        save.ReadSave(player);
+                        save.ReadSave(ref player);
                         _continue= false;
                     }
                     break;

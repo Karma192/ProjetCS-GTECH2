@@ -12,7 +12,7 @@ namespace MenuPokemon
     internal class Capacity
     {
 
-        public void NoScope(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public void NoScope(Capacity cap, Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int healthEnemi = 0;
             int damageFighter = 0;

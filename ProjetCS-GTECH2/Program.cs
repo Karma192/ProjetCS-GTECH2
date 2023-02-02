@@ -13,6 +13,7 @@ namespace Program
 
         static void Main()
         {
+            Save save = new();
             Console.CursorVisible = false;
             ConsoleKeyInfo input = new();
             MapManager mapManager = new();
@@ -24,11 +25,10 @@ namespace Program
             SpawnerEnnemy ennemy = new();
             Fight fight = new();
             sceneMenu menuScene = new();
-            Save save = new();
             char move;
             bool canMove = false;
 
-            menuScene.SceneUpdate(input, save, player, mapManager, ennemy);
+            menuScene.SceneUpdate(input, save, ref player, mapManager, ennemy);
             ennemy.SetSpawner();
 
             while (Open(input))
@@ -47,8 +47,8 @@ namespace Program
                     player.Mouvement(move);
                 }
 
-                player.DrawPlayer(50, 10);
-
+                player.DrawPlayer();
+              
                 if (!fight.OnFight)
                 {
                     player._player = "P";
