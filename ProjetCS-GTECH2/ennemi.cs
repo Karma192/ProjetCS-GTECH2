@@ -11,7 +11,7 @@ namespace pokehunter
 
         public List<Ennemi> GetEnnemis { get => _ennemis; }
 
-        public Ennemi? GetEnnemiCollided(Player player)
+        public Ennemi GetEnnemiCollided(Player player)
         {
             foreach (var e in _ennemis)
             {
@@ -20,16 +20,18 @@ namespace pokehunter
                     return e;
                 }
             }
-
-            return null;
+            return _ennemis[0];
         }
 
         public void SetSpawner()
         {
+            _ennemis.Clear();
             _quantity = _rand.Next(2, 5);
-            for(int i = 0; i < _quantity; i++)
+            for (int i = 0; i < _quantity; i++)
             {
-                Ennemi e = new(_name[_rand.Next(_name.Length)], _rand.Next(5, 120), _rand.Next(2, 28), _rand.Next(25, 100), _rand.Next(5, 30));
+                Ennemi e = new(_name[_rand.Next(_name.Length - 1)], _rand.Next(5, 115),
+                    _rand.Next(2, 26), _rand.Next(25, 100), _rand.Next(5, 30));
+                _ennemis.Add(e);
             }
         }
 

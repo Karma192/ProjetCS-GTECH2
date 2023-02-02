@@ -58,7 +58,7 @@ namespace MenuPokemon
         public bool GetActiveMenu { get => _activeMenu; }
         public bool GetFightMenu { get => _fightMenu; }
 
-        public void MenuUpdate(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, 
+        public void MenuUpdate(ConsoleKeyInfo input, ref Ennemi ennemi, Save save, Player player, 
             MapManager mapManager, Fight fight)
         {
             if (!_activeMenu && !_fightMenu)
@@ -82,7 +82,7 @@ namespace MenuPokemon
             }
         }
 
-        private void HandleKey(ConsoleKeyInfo input, Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
+        private void HandleKey(ConsoleKeyInfo input, Ennemi? ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -147,7 +147,7 @@ namespace MenuPokemon
             }
         }
 
-        private void EnterAction(Ennemi ennemi, Save save, Player player, MapManager mapManager, Fight fight)
+        private void EnterAction(Ennemi? ennemi, Save save, Player player, MapManager mapManager, Fight fight)
         {
             if (_activeMenu)
             {
@@ -250,7 +250,6 @@ namespace MenuPokemon
                         _indexActualFighter = _indexBis;
                         break;
                     case (int)indexFight.ESCAPE:
-                        Console.WriteLine("You quit the fight...");
                         _fightMenu = false;
                         fight.QuitFight(mapManager, player);
                         break;

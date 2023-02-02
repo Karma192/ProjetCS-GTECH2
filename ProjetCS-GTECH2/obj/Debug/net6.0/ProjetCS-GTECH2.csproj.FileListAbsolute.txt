@@ -75,3 +75,5 @@ C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2
 C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.pdb
 C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.genruntimeconfig.cache
 C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ref\ProjetCS-GTECH2.dll
+C:\Users\agrandpaul\source\repos\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\agrandpaul\source\repos\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
