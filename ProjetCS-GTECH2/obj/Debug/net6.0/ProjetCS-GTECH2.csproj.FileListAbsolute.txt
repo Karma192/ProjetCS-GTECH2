@@ -58,5 +58,25 @@ C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\refint\ProjetCS-GTECH2.d
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.pdb
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.genruntimeconfig.cache
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ref\ProjetCS-GTECH2.dll
+<<<<<<< HEAD
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\dev\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
+=======
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\ProjetCS-GTECH2.exe
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\ProjetCS-GTECH2.deps.json
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\ProjetCS-GTECH2.runtimeconfig.json
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\ProjetCS-GTECH2.dll
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\ProjetCS-GTECH2.pdb
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.AssemblyReference.cache
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.AssemblyInfoInputs.cache
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.AssemblyInfo.cs
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CoreCompileInputs.cache
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.csproj.CopyComplete
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.dll
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\refint\ProjetCS-GTECH2.dll
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.pdb
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ProjetCS-GTECH2.genruntimeconfig.cache
+C:\Users\Le Karma\Documents\Projets\Projet  2022\ProjetCS-GTECH2\ProjetCS-GTECH2\obj\Debug\net6.0\ref\ProjetCS-GTECH2.dll
+>>>>>>> 5a8dff855030e83b2fd49fde23fd1135fa985846

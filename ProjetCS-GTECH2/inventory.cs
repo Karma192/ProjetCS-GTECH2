@@ -1,26 +1,30 @@
-﻿using Objects;
+﻿using Newtonsoft.Json;
+using Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Text.Json.Serialization;
 using Object = Objects.Object;
 
 namespace MenuPokemon
 {
     public class Inventory
     {
-        [JsonInclude]
-        public List <Object> _objects = new();
+        List<Object> objects;
+
         
+        public List<Object> Objects { get => objects; init => objects=value; }
+
+
         public Inventory()
         {
-            _objects.Add(new Objects.Ammunitions());
-            _objects.Add(new Objects.Grenade());
-            _objects.Add(new Objects.Artifice());
-            _objects.Add(new Objects.Molotove());
-            _objects.Add(new Objects.IceGrenade());
+            objects = new List<Object>();
+            // objects.Add(new Ammunitions());
+            // objects.Add(new Grenade());
+            // objects.Add(new Artifice());
+            // objects.Add(new Molotove());
+            // objects.Add(new IceGrenade());
 
             //foreach (var el in _objects)
             //{
@@ -42,10 +46,10 @@ namespace MenuPokemon
         {
            List<string> objects = new ();
 
-            if (_objects != null)
+            if (Objects != null)
             {
                 int i = 0;
-                foreach(var obj in _objects)
+                foreach(var obj in Objects)
                 {
                     if (obj != null)
                     {
@@ -60,10 +64,10 @@ namespace MenuPokemon
 
         public void ShowInventory()
         {
-            if (_objects != null)
+            if (Objects != null)
             {
                 int posY = 2;
-                foreach (var obj in _objects)
+                foreach (var obj in Objects)
                 {
                     posY += 2;
                     if (obj != null)

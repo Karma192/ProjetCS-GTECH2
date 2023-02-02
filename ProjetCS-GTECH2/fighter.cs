@@ -32,7 +32,7 @@ namespace Fighter
             set => _attack = value;
         }
 
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         public Fighters(string name, int health, string[] attack)
         {
             _name= name;
@@ -54,7 +54,7 @@ namespace Fighter
         }
         public int Getdamage() 
         { 
-            return _damage; 
+            return _damage;
         }
         public int GetBuffDmg()
         {

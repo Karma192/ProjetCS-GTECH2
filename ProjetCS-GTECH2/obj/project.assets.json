@@ -55,23 +55,39 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\cyria\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\Le Karma\\.nuget\\packages\\": {},
+>>>>>>> 5a8dff855030e83b2fd49fde23fd1135fa985846
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
       "projectName": "ProjetCS-GTECH2",
       "projectPath": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
       "packagesPath": "C:\\Users\\cyria\\.nuget\\packages\\",
       "outputPath": "C:\\dev\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Le Karma\\Documents\\Projets\\Projet  2022\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
+      "projectName": "ProjetCS-GTECH2",
+      "projectPath": "C:\\Users\\Le Karma\\Documents\\Projets\\Projet  2022\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\ProjetCS-GTECH2.csproj",
+      "packagesPath": "C:\\Users\\Le Karma\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Le Karma\\Documents\\Projets\\Projet  2022\\ProjetCS-GTECH2\\ProjetCS-GTECH2\\obj\\",
+>>>>>>> 5a8dff855030e83b2fd49fde23fd1135fa985846
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\cyria\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\Le Karma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 5a8dff855030e83b2fd49fde23fd1135fa985846
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -119,7 +135,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

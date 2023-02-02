@@ -9,7 +9,7 @@ using Object = Objects.Object;
 
 namespace MenuPokemon
 {
-    public class Capacity
+    internal class Capacity
     {
 
         public void NoScope(Inventory inventory, Fighters fighters, Ennemi ennemi)
@@ -18,7 +18,7 @@ namespace MenuPokemon
             int damageFighter = 0;
             int damageDeal = 0;
 
-            if (inventory._objects[0]._quantity != 0)
+            if (inventory.Objects[0]._quantity != 0)
             {
                 healthEnemi = ennemi.GetHealth();
                 damageFighter = fighters.Getdamage();
@@ -53,7 +53,7 @@ namespace MenuPokemon
         public void Stielhandgranate(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory._objects[1]._quantity != 0)
+            if (inventory.Objects[1]._quantity != 0)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
                 ennemi.SetHealth(damageDeal);
@@ -66,7 +66,7 @@ namespace MenuPokemon
         public void Artifice(Inventory inventory, Fighters fighters)
         {
 
-            if (inventory._objects[2]._quantity != 0)
+            if (inventory.Objects[2]._quantity != 0)
             {
                 int buff = 0;
                 buff = 3;
@@ -80,7 +80,7 @@ namespace MenuPokemon
         public void Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory._objects[3]._quantity != 0)
+            if (inventory.Objects[3]._quantity != 0)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.GetBuffDmg();
                 ennemi.SetBurn(true);
@@ -94,7 +94,7 @@ namespace MenuPokemon
         public void IceGrenade(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int damageDeal = 0;
-            if (inventory._objects[4]._quantity != 0)
+            if (inventory.Objects[4]._quantity != 0)
             {
                 damageDeal = ennemi.GetHealth() - fighters.Getdamage()/2 + fighters.GetBuffDmg();
                 ennemi.SetDeBuff(2);

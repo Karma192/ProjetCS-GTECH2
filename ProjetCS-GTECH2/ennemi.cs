@@ -2,7 +2,47 @@
 
 namespace pokehunter
 {
-    public class Ennemi
+    internal class SpawnerEnnemy
+    {
+        int _quantity;
+        List<Ennemi> _ennemis = new();
+        Random _rand = new();
+        string[] _name = { "Pikachu", "Lucario", "Felinferno", "Evoli", "Chassaing sauvage" };
+
+        public List<Ennemi> GetEnnemis { get => _ennemis; }
+
+        public Ennemi? GetEnnemiCollided(Player player)
+        {
+            foreach (var e in _ennemis)
+            {
+                if (player.GetXPos == e.GetXPos && player.GetYPos == e.GetYPos)
+                {
+                    return e;
+                }
+            }
+
+            return null;
+        }
+
+        public void SetSpawner()
+        {
+            _quantity = _rand.Next(2, 5);
+            for(int i = 0; i < _quantity; i++)
+            {
+                Ennemi e = new(_name[_rand.Next(_name.Length)], _rand.Next(5, 120), _rand.Next(2, 28), _rand.Next(25, 100), _rand.Next(5, 30));
+            }
+        }
+
+        public void Spawn()
+        {
+            foreach (var e in _ennemis)
+            {
+                e.DrawEnnemi();
+            }
+        }
+    }
+
+    internal class Ennemi
     {
         int _xPos;
         int _yPos;
