@@ -2,7 +2,7 @@ using Fighter;
 using MenuPokemon;
 using pokehunter;
 
-namespace TestProject1
+namespace pokehunter
 {
     public class CapacityTest
     {
