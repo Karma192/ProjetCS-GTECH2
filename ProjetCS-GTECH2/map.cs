@@ -96,12 +96,14 @@ namespace pokehunter
             }
         }
 
-        public void DrawMap(Player player, SpawnerEnnemy sp)
+        public void DrawMap(Player player, SpawnerEnnemy sp, PNJ pnjQG, PNJ pnjQT, Narrator narrator)
         {
             switch (_actualMap)
             {
                 case (int)mapIndex.VILLAGE:
                     _map.InitTab("ascii-art.txt");
+                    pnjQG.Draw();
+                    pnjQG.OnCollide(player, ref narrator);
                     Changers(player, sp);
                     break;
                 case (int)mapIndex.FOREST:
@@ -110,6 +112,8 @@ namespace pokehunter
                     break;
                 case (int)mapIndex.CAVE:
                     _map.InitTab("caveMap.txt");
+                    pnjQT.Draw();
+                    pnjQT.OnCollide(player, ref narrator);
                     Changers(player, sp);
                     break;
                 case (int)mapIndex.COMBAT:

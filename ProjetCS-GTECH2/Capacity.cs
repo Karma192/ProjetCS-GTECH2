@@ -6,128 +6,145 @@ using MenuPokemon;
 using pokehunter;
 using Fighter;
 using Object = Objects.Object;
+using System.Net.Http.Headers;
 
 namespace MenuPokemon
 {
     internal class Capacity
     {
 
-        public void NoScope(Capacity cap, Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public int NoScope(Capacity cap, Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
             int healthEnemi = 0;
             int damageFighter = 0;
+            int finalheath = 0;
             int damageDeal = 0;
 
-            if (inventory.Objects[0]._quantity != 0)
+            if (inventory.Objects[0].Use(1) != false)
             {
                 healthEnemi = ennemi.GetHealth();
                 damageFighter = fighters.Getdamage();
-                damageDeal = healthEnemi - (damageFighter + damageFighter / 2);
-                ennemi.SetHealth(damageDeal);
+                damageDeal = (damageFighter + damageFighter / 2) + fighters.GetBuffDmg();
+                finalheath = healthEnemi -  damageDeal;
+                ennemi.SetHealth(finalheath);
 
             }
-            else
-            {
-                Console.WriteLine("No more ammo.");
-            }
+            return damageDeal;
         }
 
-        public void CoupDeCrosse(Fighters fighters, Ennemi ennemi)
+        public int CoupDeCrosse(Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            damageDeal = ennemi.GetHealth() - (fighters.Getdamage() + fighters.Getdamage() / 3) + fighters.GetBuffDmg();
-            ennemi.SetHealth(damageDeal);
+            damageDeal = (fighters.Getdamage() + fighters.Getdamage() / 3) + fighters.GetBuffDmg();
+            finalheath = ennemi.GetHealth() - damageDeal;
+            ennemi.SetHealth(finalheath);
+            return damageDeal;
         }
-        public void AmericaFckYeah(Fighters fighters)
+        public int AmericaFckYeah(Fighters fighters)
         {
             int buff = 0;
             buff = 2;
             fighters.SetBuffDmg(buff);
+            return fighters.Getdamage();
         }
-        public void HeadShot(Fighters fighters, Ennemi ennemi)
+        public int HeadShot(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            damageDeal = ennemi.GetHealth() - (fighters.Getdamage() + fighters.GetBuffDmg()) * 2;
-            ennemi.SetHealth(damageDeal);
+            if (inventory.Objects[0].Use(1) != false)
+            {
+                damageDeal = (fighters.Getdamage() + fighters.GetBuffDmg()) * 2;
+                finalheath = ennemi.GetHealth() - damageDeal;
+                ennemi.SetHealth(finalheath);
+            }
+                return damageDeal;
         }
-        public void Stielhandgranate(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public int Stielhandgranate(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            if (inventory.Objects[1]._quantity != 0)
+            if (inventory.Objects[1].Use(1) != false)
             {
-                damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
-                ennemi.SetHealth(damageDeal);
+                damageDeal = fighters.Getdamage() * 2 + fighters.GetBuffDmg();
+                finalheath = ennemi.GetHealth() - damageDeal;
+                ennemi.SetHealth(finalheath);
             }
-            else
-            {
-                Console.WriteLine("No more grenade.");
-            }
-        }
-        public void Artifice(Inventory inventory, Fighters fighters)
-        {
+            return damageDeal;
 
-            if (inventory.Objects[2]._quantity != 0)
+        }
+        public int Artifice(Inventory inventory, Fighters fighters)
+        {
+            if (inventory.Objects[2].Use(1) != false)
             {
                 int buff = 0;
                 buff = 3;
                 fighters.SetBuffDmg(buff);
             }
-            else
-            {
-                Console.WriteLine("No more grenade.");
-            }
+
+                return fighters.Getdamage();
         }
-        public void Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public int Molotove(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            if (inventory.Objects[3]._quantity != 0)
+            if (inventory.Objects[3].Use(1) != false)
             {
-                damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.GetBuffDmg();
+                    damageDeal = fighters.Getdamage() + fighters.GetBuffDmg();
+                finalheath = ennemi.GetHealth() - damageDeal;
                 ennemi.SetBurn(true);
-                ennemi.SetHealth(damageDeal);
+                ennemi.SetHealth(finalheath);
             }
-            else
-            {
-                Console.WriteLine("No more Molotov.");
-            }
+                return damageDeal;
         }
-        public void IceGrenade(Inventory inventory, Fighters fighters, Ennemi ennemi)
+        public int IceGrenade(Inventory inventory, Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            if (inventory.Objects[4]._quantity != 0)
+            if (inventory.Objects[4].Use(1) != false)
+
             {
-                damageDeal = ennemi.GetHealth() - fighters.Getdamage()/2 + fighters.GetBuffDmg();
+                    damageDeal = fighters.Getdamage() / 2 + fighters.GetBuffDmg();
+                    finalheath = ennemi.GetHealth() - damageDeal;
                 ennemi.SetDeBuff(2);
-                ennemi.SetHealth(damageDeal);
+                ennemi.SetHealth(finalheath);
             }
-            else
-            {
-                Console.WriteLine("No more Ice grenade.");
-            }
+                return damageDeal;
+
         }
-        public void Uppercut(Fighters fighters, Ennemi ennemi)
+        public int Uppercut(Fighters fighters, Ennemi ennemi)
         {
-                int damageDeal = 0;
-                damageDeal = ennemi.GetHealth() - fighters.Getdamage()  + fighters.GetBuffDmg();
-                ennemi.SetHealth(damageDeal);
-        }
-        public void CoupDeQueue(Fighters fighters, Ennemi ennemi)
-        {
+            int finalheath = 0;
             int damageDeal = 0;
-            damageDeal = ennemi.GetHealth() - fighters.Getdamage()*2 + fighters.GetBuffDmg();
-            ennemi.SetHealth(damageDeal);
+            damageDeal = fighters.Getdamage() + fighters.GetBuffDmg();
+            finalheath = ennemi.GetHealth() -damageDeal ;
+                ennemi.SetHealth(finalheath);
+            return damageDeal;
         }
-        public void MawashiGeri(Fighters fighters, Ennemi ennemi)
+        public int CoupDeQueue(Fighters fighters, Ennemi ennemi)
         {
+            int finalheath = 0;
             int damageDeal = 0;
-            damageDeal = ennemi.GetHealth() - fighters.Getdamage() + fighters.Getdamage() /4 + fighters.GetBuffDmg();
-            ennemi.SetHealth(damageDeal);
+            damageDeal = fighters.Getdamage() * 2 + fighters.GetBuffDmg();
+            finalheath = ennemi.GetHealth() - damageDeal;
+            ennemi.SetHealth(finalheath);
+            return damageDeal;
         }
-        public void Roulade(Fighters fighters)
+        public int MawashiGeri(Fighters fighters, Ennemi ennemi)
+        {
+            int finalheath = 0;
+            int damageDeal = 0;
+            damageDeal = fighters.Getdamage() + fighters.Getdamage() / 4 + fighters.GetBuffDmg();
+            finalheath = ennemi.GetHealth() - damageDeal;
+            ennemi.SetHealth(finalheath);
+            return damageDeal;
+        }
+        public int Roulade(Fighters fighters)
         {
             int buff = 0;
             buff = 5;
             fighters.SetBuffDmg(buff);
+            return fighters.Getdamage();
         }
     }
 }

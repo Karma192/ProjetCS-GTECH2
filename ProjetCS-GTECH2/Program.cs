@@ -19,6 +19,9 @@ namespace Program
             MapManager mapManager = new();
             Menu menu = new();
             Player player = new();
+            Narrator narrator = new();
+            PNJ questGiver = new PNJ(23, 8, 0);
+            PNJ questTarget = new PNJ(91, 19, 1);
             SpawnerEnnemy ennemy = new();
             Fight fight = new();
             sceneMenu menuScene = new();
@@ -34,7 +37,7 @@ namespace Program
                 Ennemi e = ennemy.GetEnnemiCollided(player);
                 Console.SetCursorPosition(0, 0);
                 fight.DetectFight(player, ennemy.GetEnnemis, mapManager, ennemy);
-                mapManager.DrawMap(player, ennemy);
+                mapManager.DrawMap(player, ennemy, questGiver, questTarget, narrator);
                 menu.MenuUpdate(input, ref e, save, player, mapManager, fight);
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
