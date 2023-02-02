@@ -174,7 +174,7 @@ namespace MenuPokemon
                         {
                             if (_indexActualFighter == 0)
                             {
-                                capa.NoScope(inventory, team.Fighters[_indexActualFighter], ennemi);
+                                capa.NoScope(capa, inventory, team.Fighters[_indexActualFighter], ennemi);
                                 Console.WriteLine(ennemi.GetHealth());
                             }
                             else if (_indexActualFighter == 1)

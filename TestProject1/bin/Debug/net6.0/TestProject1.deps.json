@@ -654,6 +654,9 @@
         }
       },
       "ProjetCS-GTECH2/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1"
+        },
         "runtime": {
           "ProjetCS-GTECH2.dll": {}
         }
