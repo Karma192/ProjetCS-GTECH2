@@ -16,7 +16,7 @@ namespace GameSave
 
         }
 
-        public void DoSave(Player player, Team team, MapManager mapManager, Inventory inventory)
+        public void DoSave( Player player, Team team, MapManager mapManager, Inventory inventory)
         {
             var option = new JsonSerializerOptions()
             {
