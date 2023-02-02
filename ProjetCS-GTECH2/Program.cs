@@ -30,12 +30,12 @@ namespace Program
 
             while (Open(input))
             {
-                input = Console.ReadKey();
+                input = Console.ReadKey(true);
+                Ennemi e = ennemy.GetEnnemiCollided(player);
                 Console.SetCursorPosition(0, 0);
                 fight.DetectFight(player, ennemy.GetEnnemis, mapManager, ennemy);
                 mapManager.DrawMap(player, ennemy);
-                menu.MenuUpdate(input, ennemy.GetEnnemiCollided(player), save, player, mapManager, fight);
-                ennemy.Spawn();
+                menu.MenuUpdate(input, ref e, save, player, mapManager, fight);
                 move = player.Getinput(input);
                 canMove = TestMovement(move, mapManager.GetMap(), player);
 
@@ -49,12 +49,12 @@ namespace Program
                 if (!fight.OnFight)
                 {
                     player._player = "P";
+                    ennemy.Spawn();
                 }
                 else
                 {
                     player._player = " ";
                 }
-
             }
         }
 

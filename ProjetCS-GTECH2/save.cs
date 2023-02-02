@@ -1,6 +1,7 @@
 ﻿using Fighter;
 using MenuPokemon;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using pokehunter;
 using System.Text.Json;
 using System.Text.Json.Nodes;
